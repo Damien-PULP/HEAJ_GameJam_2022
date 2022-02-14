@@ -1,0 +1,27 @@
+/* ------------------------------NOMENCLATURE---------------------------------------*/
+Code : 
+- coding convention of school : 
+● Pas de ‘nombre magique’
+● Variable locale: minuscule (au moins le premier mot) type ‘camelCase’ ou/avec ‘_’
+● Méthode : ‘CamelCase’ commençant avec une majuscule ( avec ou sans ‘_’ )
+● Variable d'objet: mCamelCase ( avec ou sans ‘_’ )
+● Variable statique : sCamelCase (avec ou sans ‘_’)
+● Un minimum de commentaires (sans exagérer, ne décrivez pas en commentaire ce
+que fait une ligne de code)
+● Nom de classe: MaNouvelleClasse en ‘camel case’
+● Soyez consistent dans vos nomenclatures
+● Vos nomenclatures et commentaires doivent être en anglais compréhensible
+
+/* ---------------------------------------------------------------------------------*/
+Modelisation :
+
+/* ---------------------------------------------------------------------------------*/
+Texture : 
+ - BaseColor : xxx_BC;
+ - Normal : xxx_N;
+ - ORM = xxx_ORM;
+ - Emission : xxx_E;
+ - Mask : xxx_M;
+
+/* ---------------------------------------------------------------------------------*/
+Animation : 
