@@ -39,7 +39,8 @@ public class SoundManager : MonoBehaviour
             s.m_Source.pitch = s.m_Pitch;
             s.m_Source.loop = s.m_Loop;
             s.m_Source.spatialBlend = s.m_SpacialBlend2DTo3D;
-
+            s.m_Source.minDistance = s.m_MinDistance;
+            s.m_Source.maxDistance = s.m_MaxDistance;
         }
     }
 }
