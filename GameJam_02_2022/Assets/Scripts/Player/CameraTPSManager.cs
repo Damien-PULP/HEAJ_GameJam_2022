@@ -16,6 +16,8 @@ public class CameraTPSManager : MonoBehaviour
     [Space]
     public float m_MinVertAngle = -35f;
     public float m_MaxVertAngle = 35f;
+    public float m_LeftAngleHorizontal = -35f;
+    public float m_RightAngleHorizontal = 35f;
     [Space]
     public float m_RadiusCollision = 0.5f;
     public float m_CollisionOffset = 0.2f;
@@ -48,13 +50,14 @@ public class CameraTPSManager : MonoBehaviour
     private void FollowTarget()
     {
         Vector3 targetPos = Vector3.SmoothDamp(transform.position,m_Target.position, ref VelocityCam, m_Speed);
-        transform.position = targetPos;
+        //transform.position = targetPos;
     }
     private void RotateCamera()
     {
         HorAngle += m_InputManager.GetInputCamera().x * m_RotationSpeed * m_HorizontalSensivity;
         VertAngle += m_InputManager.GetInputCamera().y * m_RotationSpeed * m_VerticalSensivity;
         VertAngle = Mathf.Clamp(VertAngle, m_MinVertAngle, m_MaxVertAngle);
+        HorAngle = Mathf.Clamp(HorAngle, m_LeftAngleHorizontal, m_RightAngleHorizontal);
 
         Vector3 rot;
         Quaternion targetRot;
@@ -62,7 +65,7 @@ public class CameraTPSManager : MonoBehaviour
         rot = Vector3.zero;
         rot.y = HorAngle;
         targetRot = Quaternion.Euler(rot);
-        transform.rotation = targetRot;
+        transform.localRotation = targetRot;
 
         rot = Vector3.zero;
         rot.x = VertAngle;
