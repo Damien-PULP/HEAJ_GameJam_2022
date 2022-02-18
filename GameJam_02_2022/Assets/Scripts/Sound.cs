@@ -11,13 +11,14 @@ public class Sound
     [Space]
     public AudioClip m_AudioClip;
     public bool m_Loop;
+    public bool m_PlayOnAwake = false;
     [Range(0f, 1f)]
-    public float m_Volume;
-    [Range(1f, 3f)]
-    public float m_Pitch;
+    public float m_Volume = 1;
+    [Range(-3f, 3f)]
+    public float m_Pitch = 1f;
     [Header("3D Sound Settings")]
     [Range(0f,1f)]
-    public float m_SpacialBlend2DTo3D;
+    public float m_SpacialBlend2DTo3D = 0f;
     public float m_MinDistance = 1f;
     public float m_MaxDistance = 100f;
     [HideInInspector]

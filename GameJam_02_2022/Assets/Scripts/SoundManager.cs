@@ -12,7 +12,7 @@ public class SoundManager : MonoBehaviour
     {
         if (s_Instance)
         {
-            Destroy(this);
+            Destroy(gameObject);
             return;
         }
         else
@@ -23,7 +23,7 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
-        // Add AudioSource
+        // Add AudioSource and set settings
         foreach(Sound s in m_Sounds)
         {
             GameObject parent = s.m_ParentSound;
@@ -41,11 +41,19 @@ public class SoundManager : MonoBehaviour
             s.m_Source.spatialBlend = s.m_SpacialBlend2DTo3D;
             s.m_Source.minDistance = s.m_MinDistance;
             s.m_Source.maxDistance = s.m_MaxDistance;
+            s.m_Source.playOnAwake = s.m_PlayOnAwake;
+            if (s.m_PlayOnAwake)
+            {
+                s.m_Source.Play();
+            }
         }
+        DontDestroyOnLoad(gameObject);
     }
 
     public void PlaySound(string name)
     {
-
+        Sound s = Array.Find(m_Sounds, sound => sound.m_Name == name);
+        if (s == null) return;
+        s.m_Source.Play();
     }
 }

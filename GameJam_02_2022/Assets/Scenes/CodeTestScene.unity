@@ -260,21 +260,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Sounds:
-  - m_Name: 
-    m_AudioClip: {fileID: 0}
-    m_ParentSound: {fileID: 0}
-    m_Volume: 0
-    m_Pitch: 0
-    m_SpacialBlend2DTo3D: 0
-    m_Loop: 0
+  - m_Name: PlayerWalk
+    m_ParentSound: {fileID: 1871013340}
+    m_AudioClip: {fileID: 8300000, guid: 987a91d96d47ee24ba54cf73399e30a1, type: 3}
+    m_Loop: 1
+    m_PlayOnAwake: 1
+    m_Volume: 1
+    m_Pitch: 1
+    m_SpacialBlend2DTo3D: 1
+    m_MinDistance: 1
+    m_MaxDistance: 100
     m_Source: {fileID: 0}
-  - m_Name: 
-    m_AudioClip: {fileID: 0}
+  - m_Name: Theme
     m_ParentSound: {fileID: 0}
-    m_Volume: 0
-    m_Pitch: 0
+    m_AudioClip: {fileID: 8300000, guid: f3511a41795c0bf459a540c25de7068e, type: 3}
+    m_Loop: 1
+    m_PlayOnAwake: 1
+    m_Volume: 0.175
+    m_Pitch: 1
     m_SpacialBlend2DTo3D: 0
-    m_Loop: 0
+    m_MinDistance: 1
+    m_MaxDistance: 100
     m_Source: {fileID: 0}
 --- !u!1 &1789163361
 GameObject:
@@ -306,6 +312,36 @@ Transform:
   - {fileID: 832428563}
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1871013340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1871013341}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1871013341
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871013340}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1886544781
 GameObject:
