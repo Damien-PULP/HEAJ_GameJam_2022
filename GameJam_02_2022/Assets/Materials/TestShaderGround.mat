@@ -63,12 +63,17 @@ Material:
         m_Texture: {fileID: 8900000, guid: ef7513b54a0670140b9b967af7620563, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _FakeLightingMultiplier: 0
+    - _Float0: 50.3
     - _GalaxyBooster: 1
     - _GalaxycolorCurve: 1
     - _GlossMapScale: 1
@@ -85,6 +90,8 @@ Material:
     - _Parallax: 0.02
     - _PortalBorderSize: 0
     - _PortalSize: 0
+    - _RadiusVirus: 0.1
+    - _SideEffect: -0.3
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -96,4 +103,7 @@ Material:
     - _Color0: {r: 0.2110627, g: 0.4811321, b: 0.3049637, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _PortalBorderColor: {r: 0.06581525, g: 0.1680098, b: 0.8207547, a: 0}
+    - _Tilling: {r: 1, g: 1, b: 0, a: 0}
+    - _Vector0: {r: 0, g: 0, b: 0, a: 0}
+    - _Vector1: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
