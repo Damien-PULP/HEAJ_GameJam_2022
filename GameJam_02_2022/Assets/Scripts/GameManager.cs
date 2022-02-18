@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public float CurrentTimerParty;
 
-    private void Start()
+    private void Awake()
     {
         if (s_Instance)
         {
