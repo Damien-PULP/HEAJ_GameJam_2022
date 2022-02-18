@@ -43,4 +43,9 @@ public class SoundManager : MonoBehaviour
             s.m_Source.maxDistance = s.m_MaxDistance;
         }
     }
+
+    public void PlaySound(string name)
+    {
+
+    }
 }
