@@ -11,6 +11,7 @@ public class AnimatorController : MonoBehaviour
     public string m_SimpleAttackParams = "SimpleAttack";
     public string m_SpeelAttackParams = "SpeelAttack";
     public string m_DeadParams = "Dead";
+    public string m_ImpactedParams = "Impacted";
     public float m_TimeAnimationDead = 2.8f;
     private bool isDead;
     private float Timer;
@@ -39,6 +40,10 @@ public class AnimatorController : MonoBehaviour
     public void SpeelAttack()
     {
         m_Animator.SetTrigger(m_SpeelAttackParams);
+    }
+    public void Impacted()
+    {
+        m_Animator.SetTrigger(m_ImpactedParams);
     }
     public void Dead()
     {

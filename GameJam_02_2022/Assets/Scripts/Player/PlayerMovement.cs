@@ -170,6 +170,8 @@ public class PlayerMovement : MonoBehaviour
             case E_State.InGame:
                 break;
             case E_State.Impacted:
+                if (m_AnimatorController) m_AnimatorController.Impacted();
+                SwitchState(E_State.InGame);
                 break;
             case E_State.Dead:
                 Dead();

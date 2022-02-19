@@ -250,6 +250,10 @@ public class GameManager : MonoBehaviour
             m_CurrentHealth = 0f;
             SwitchState(E_State.GameOver);
         }
+        else
+        {
+            m_PlayerMovement.SwitchState(PlayerMovement.E_State.Impacted);
+        }
         float percentHealth = Mathf.Clamp01(m_CurrentHealth / m_MaxHealth);
         m_CanvasManager.UpdateHealth(percentHealth);
     }
