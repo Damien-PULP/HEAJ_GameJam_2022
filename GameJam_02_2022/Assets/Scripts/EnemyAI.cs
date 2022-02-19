@@ -6,7 +6,16 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyAI : MonoBehaviour
 {
-
+    public enum E_State
+    {
+        Spawn,
+        Chase,
+        Impact,
+        Attack,
+        Idle,
+        Dead,
+    }
+    public E_State m_CurrentState;
     private Transform PlayerTarget;
     public Transform TowerTarget;
     public Vector3 CurrentPos = new Vector3();
