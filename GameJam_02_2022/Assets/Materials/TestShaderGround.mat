@@ -90,6 +90,7 @@ Material:
     - _Parallax: 0.02
     - _PortalBorderSize: 0
     - _PortalSize: 0
+    - _Radius: 62.23
     - _RadiusVirus: 0.1
     - _SideEffect: -0.3
     - _SmoothnessTextureChannel: 0
@@ -99,6 +100,7 @@ Material:
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
+    - _CenterPosition: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 0.6603774, g: 0, b: 0, a: 1}
     - _Color0: {r: 0.2110627, g: 0.4811321, b: 0.3049637, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
