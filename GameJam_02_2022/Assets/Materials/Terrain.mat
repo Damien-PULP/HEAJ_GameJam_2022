@@ -140,7 +140,7 @@ Material:
     - _ScaleNormalGravel: 0.67
     - _ScaleNormalRock: 0.82
     - _SideEffect1: -4.8
-    - _Smoothness: 0.127
+    - _Smoothness: 0.147
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SpeedNoiseBorder: 0.002
