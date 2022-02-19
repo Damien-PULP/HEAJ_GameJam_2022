@@ -26,7 +26,7 @@ public class InputManager : MonoBehaviour
     }
     public void PickUpInput()
     {
-        GameManager.s_Instance.AddEnerrgyLevel();
+        GameManager.s_Instance.AddEnergyLevel();
     }
     public Vector2 GetInputMovement()
     {

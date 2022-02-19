@@ -6,9 +6,13 @@ using UnityEngine.UI;
 public class CanvasManager : MonoBehaviour
 {
     public GameObject m_MessageDropEnergy;
+
     [Header("HUD")]
     public Image m_HealthBar;
-    public Image m_EnergyMana;
+    public Image m_ManaBar;
+    public Image m_AdvencementLevelBar;
+    public Text m_EnergyPickupText;
+    public GameObject[] m_LevelTowerImage;
 
     public void ActiveOrDisableMessageDropEnergy(bool active)
     {
@@ -21,6 +25,28 @@ public class CanvasManager : MonoBehaviour
     }
     public void UpdateMana(float percent)
     {
-        m_EnergyMana.fillAmount = percent;
+        m_ManaBar.fillAmount = percent;
+    }
+    public void UpdateLevelTower (int level)
+    {
+        for (int i = 0; i < m_LevelTowerImage.Length; i++)
+        {
+            if(i <= level)
+            {
+                m_LevelTowerImage[i].SetActive(true);
+            }
+            else
+            {
+                m_LevelTowerImage[i].SetActive(false);
+            }
+        }
+    }
+    public void UpdateEnergyPickup(int energy)
+    {
+        m_EnergyPickupText.text = string.Concat(energy);
+    }
+    public void UpdateAdvencementLevel(float percent)
+    {
+        m_AdvencementLevelBar.fillAmount = percent;
     }
 }

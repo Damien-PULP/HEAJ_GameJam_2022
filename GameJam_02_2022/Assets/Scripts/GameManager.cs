@@ -108,6 +108,9 @@ public class GameManager : MonoBehaviour
         {
             case E_State.Start:
                 m_TowerOfPower.UpdateTower();
+                m_CanvasManager.UpdateLevelTower(m_CurrentLevel);
+                m_CanvasManager.UpdateAdvencementLevel(0f);
+                m_CanvasManager.UpdateEnergyPickup(m_CurrentEnergyCollected);
                 SwitchState(E_State.InGame);
                 break;
             case E_State.InGame:
@@ -168,6 +171,7 @@ public class GameManager : MonoBehaviour
             m_CurrentStepAdvencementNextLevel = (int) (m_CurrentStepAdvencementNextLevel * m_FactorStepAdvencementLevel);
             SwitchState(E_State.UpgradeLevel);
         }
+        m_CanvasManager.UpdateLevelTower(m_CurrentLevel);
         // CHANGE TOWER
     }
     public bool CollectEnergy(int point)
@@ -175,6 +179,7 @@ public class GameManager : MonoBehaviour
         if( (m_CurrentEnergyCollected + point) <= m_MaxEnergyToTransport)
         {
             m_CurrentEnergyCollected += point;
+            m_CanvasManager.UpdateEnergyPickup(m_CurrentEnergyCollected);
             return true;
         }
         else
@@ -183,7 +188,7 @@ public class GameManager : MonoBehaviour
             return false;
         }
     }
-    public void AddEnerrgyLevel()
+    public void AddEnergyLevel()
     {
         if (!IsPossibleToDropEnergy) return;
 
@@ -194,6 +199,9 @@ public class GameManager : MonoBehaviour
             m_CurrentAdvencementLevel -= m_CurrentStepAdvencementNextLevel;
             UpgradeLevel();
         }
+        float percentLevel = Mathf.Clamp01(m_CurrentAdvencementLevel / m_CurrentStepAdvencementNextLevel);
+        m_CanvasManager.UpdateAdvencementLevel(percentLevel);
+        m_CanvasManager.UpdateEnergyPickup(m_CurrentEnergyCollected);
     }
     private void CheckDistanceToDropEnergy()
     {
