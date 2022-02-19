@@ -6,6 +6,13 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
+    public enum E_State
+    {
+        InGame,
+        Impacted,
+        Dead
+    }
+    public E_State m_CurrentState;
     [Header("Movement Attributes")]
     public float m_RunSpeed = 6f;
     public float m_SprintSpeed = 9f;
@@ -34,17 +41,39 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        HandleMovement();
-        HandleRotation();
+        switch (m_CurrentState)
+        {
+            case E_State.InGame:
+                HandleMovement();
+                HandleRotation();
+                break;
+            case E_State.Impacted:
+                break;
+            case E_State.Dead:
+                break;
+            default:
+                break;
+        }
     }
 
     private void Update()
     {
         GetMovementInput();
-        UpdateAnimation(0, MoveValue, IsSprinting);
+        switch (m_CurrentState)
+        {
+            case E_State.InGame:
+                UpdateMoveAnimation(0, MoveValue, IsSprinting);
+                break;
+            case E_State.Impacted:
+                break;
+            case E_State.Dead:
+                break;
+            default:
+                break;
+        }
     }
 
-    private void UpdateAnimation(float horMovement, float vertMovement, bool sprint)
+    private void UpdateMoveAnimation(float horMovement, float vertMovement, bool sprint)
     {
         float snappedHor;
         float snappedVert;
@@ -134,6 +163,44 @@ public class PlayerMovement : MonoBehaviour
 
         transform.rotation = playerRot;
     }
+    private void EnterState()
+    {
+        switch (m_CurrentState)
+        {
+            case E_State.InGame:
+                break;
+            case E_State.Impacted:
+                if (m_AnimatorController) m_AnimatorController.Impacted();
+                SwitchState(E_State.InGame);
+                break;
+            case E_State.Dead:
+                Dead();
+                break;
+            default:
+                break;
+        }
+    }
+    private void ExitState()
+    {
+        switch (m_CurrentState)
+        {
+            case E_State.InGame:
+                break;
+            case E_State.Impacted:
+                break;
+            case E_State.Dead:
+                break;
+            default:
+                break;
+        }
+    }
+    public void SwitchState(E_State newState)
+    {
+        ExitState();
+        m_CurrentState = newState;
+        EnterState();
+    }
+
     public void SimpleAttack()
     {
         if (m_AnimatorController) m_AnimatorController.SimpleAttack();
@@ -141,5 +208,9 @@ public class PlayerMovement : MonoBehaviour
     public void SpeelAttack()
     {
         if (m_AnimatorController) m_AnimatorController.SpeelAttack();
+    }
+    public void Dead()
+    {
+        if (m_AnimatorController) m_AnimatorController.Dead();
     }
 }
