@@ -50,14 +50,14 @@ public class CameraTPSManager : MonoBehaviour
     private void FollowTarget()
     {
         Vector3 targetPos = Vector3.SmoothDamp(transform.position,m_Target.position, ref VelocityCam, m_Speed);
-        //transform.position = targetPos;
+        transform.position = targetPos;
     }
     private void RotateCamera()
     {
         HorAngle += m_InputManager.GetInputCamera().x * m_RotationSpeed * m_HorizontalSensivity;
         VertAngle += m_InputManager.GetInputCamera().y * m_RotationSpeed * m_VerticalSensivity;
         VertAngle = Mathf.Clamp(VertAngle, m_MinVertAngle, m_MaxVertAngle);
-        HorAngle = Mathf.Clamp(HorAngle, m_LeftAngleHorizontal, m_RightAngleHorizontal);
+        //HorAngle = Mathf.Clamp(HorAngle, m_LeftAngleHorizontal, m_RightAngleHorizontal);
 
         Vector3 rot;
         Quaternion targetRot;

@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Albedo:
-        m_Texture: {fileID: 2800000, guid: 20f732f3f8033354a8626d33b2d29d6e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 91e17bb3c43932a4883f74477e40cc30, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -44,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emissive:
-        m_Texture: {fileID: 2800000, guid: d13e65ba4ad41c44ca087d882eedeb55, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -56,11 +56,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: 23a95b226669897449bb697ce3e6a58a, type: 3}
+        m_Texture: {fileID: 2800000, guid: beb5a9d94d6b2c949aa9991bdaa6bd65, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ORM:
-        m_Texture: {fileID: 2800000, guid: e16e44488e7ecd3459b7e468b6e33de2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9ac80c0bd1b184b45a8e888d79f5e751, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -83,16 +83,17 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _IntensityNormal: 0.5
     - _InverseYNormal: 1
-    - _MaxIntensityFlash: 1.2
+    - _MaxIntensityFlash: 1
     - _Metallic: 0
-    - _MinIntensityFlash: 0.8
+    - _MinIntensityFlash: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SpeedFlashEmission: 1
+    - _SpeedFlashEmission: 1.6
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
@@ -100,6 +101,6 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MaxColorEmission: {r: 0, g: 3.7019608, b: 4, a: 0}
-    - _MinColorEmission: {r: 0, g: 2.5044777, b: 5.278032, a: 0}
+    - _MaxColorEmission: {r: 0, g: 0.0006778493, b: 0.0007314645, a: 0}
+    - _MinColorEmission: {r: 0, g: 0.00034849878, b: 0.0007314645, a: 0}
   m_BuildTextureStacks: []

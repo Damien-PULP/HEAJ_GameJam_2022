@@ -5,6 +5,7 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     public static PlayerControls s_PlayerControls;
+    public PlayerMovement m_PlayerMovement;
 
     private Vector2 InputMovement;
     private Vector2 InputCamera;
@@ -21,12 +22,22 @@ public class InputManager : MonoBehaviour
             s_PlayerControls.PlayerActions.B.performed += i => B_Input = true;
             s_PlayerControls.PlayerActions.B.canceled += i => B_Input = false;
             s_PlayerControls.PlayerActions.Drop.performed += i => PickUpInput();
+            s_PlayerControls.PlayerActions.Fire1.performed += i => Fire1();
+            s_PlayerControls.PlayerActions.Fire2.performed += i => Fire2();
         }
         s_PlayerControls.Enable();
     }
     public void PickUpInput()
     {
         GameManager.s_Instance.AddEnergyLevel();
+    }
+    public void Fire1()
+    {
+        m_PlayerMovement.SimpleAttack();
+    }
+    public void Fire2()
+    {
+        m_PlayerMovement.SpeelAttack();
     }
     public Vector2 GetInputMovement()
     {
