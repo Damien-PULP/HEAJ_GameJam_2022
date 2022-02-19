@@ -27,6 +27,10 @@ public class GameManager : MonoBehaviour
     public float m_MinDistanceToDropEnergyCollected = 2f;
     public int m_MaxEnergyToTransport = 500;
     public int m_CurrentEnergyCollected = 0;
+    public int m_MaxAttackEnemySimultaneous = 2;
+
+    [HideInInspector]
+    public int CurrentNbEnemyWhyAttack;
 
     [Header("Player Values")]
     public float m_CurrentHealth = 100f;
@@ -53,6 +57,7 @@ public class GameManager : MonoBehaviour
 
     private bool IsPossibleToDropEnergy;
     private bool IsPlayerInZone;
+
 
     private void Awake()
     {
@@ -296,4 +301,24 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
+
+    public void IndicEnemyStartAttack()
+    {
+        CurrentNbEnemyWhyAttack++;
+    }
+    public void IndicEnemyStopAttack()
+    {
+        CurrentNbEnemyWhyAttack--;
+    }
+    public bool CheckIfCanBeAttack()
+    {
+        if(CurrentNbEnemyWhyAttack < m_MaxAttackEnemySimultaneous)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

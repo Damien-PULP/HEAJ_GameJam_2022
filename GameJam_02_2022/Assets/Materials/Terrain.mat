@@ -10,7 +10,7 @@ Material:
   m_Name: Terrain
   m_Shader: {fileID: 4800000, guid: 7c40302cfadb6c042932b3b2af7dac0e, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -115,7 +115,23 @@ Material:
         m_Texture: {fileID: 2800000, guid: 7f552bff8573ec64492090f6f4415ca1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _TextureMasks:
+        m_Texture: {fileID: 2800000, guid: 9cbf769917ac556408f9140286468c2f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureParasite:
+        m_Texture: {fileID: 2800000, guid: 0d1508541d32f0840840edcac1f44747, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _TextureParasite1:
+        m_Texture: {fileID: 2800000, guid: 20c81e09508a5ec4fba65a8abee04320, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureParasiteAO:
+        m_Texture: {fileID: 2800000, guid: 04acbae515bedef47892a8c7b7cf9711, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureParasiteAlbedo:
         m_Texture: {fileID: 2800000, guid: 20c81e09508a5ec4fba65a8abee04320, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -128,31 +144,48 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _BorderIntensity: 1.54
+    - _AlbedoParasiteIntensity: 0.51
+    - _BorderIntensity: 2.18
     - _BumpScale: 1
+    - _ContaminedHeightIntensity: 0.0001
+    - _ContaminedNormalIntensity: 1
+    - _ContaminedSmoothnessIntensity: 1
+    - _ContaminedSmoothnessIntensity1: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _EdgeLength: 15
+    - _Float1: 0.00002
+    - _Float2: 0.001
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _HeightTest1: -0.03
+    - _HeightTest2: 1.01
+    - _HeightTest3: 0.54
     - _Metallic: 0
     - _Mode: 0
+    - _NoiseHeightParasiteIntensity: 2.39
+    - _NoiseHeightParasiteScale: 174.73
+    - _NormalIntensity: 1.74
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _Radius1: 126.06
-    - _RadiusInfection: 63.908825
+    - _RadiusInfection: 0
     - _ScaleBorderNoise: 420.78
     - _ScaleNormalDirt: 0.88
     - _ScaleNormalGrass: 0.66
     - _ScaleNormalGravel: 0.67
     - _ScaleNormalRock: 0.82
+    - _SideEffect: -4.8
     - _SideEffect1: -4.8
-    - _Smoothness: 0.147
+    - _Smoothness: 0.169
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
+    - _Speed: 0.001
     - _SpeedNoiseBorder: 0.002
     - _SrcBlend: 1
+    - _Tesselation: 1
     - _UVSec: 0
     - _ZWrite: 1
     - __dirty: 0
@@ -160,7 +193,7 @@ Material:
     - _CenterPosition1: {r: 0, g: 0, b: 0, a: 0}
     - _CenterPositionWorld: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0.9150943, g: 0.06474723, b: 0.06474723, a: 1}
     - _ParasiteCOlor: {r: 1, g: 0, b: 0.91517925, a: 0}
     - _ParasiteColor1: {r: 1, g: 0, b: 0.67560244, a: 0}
     - _TillingDirt: {r: 16, g: 16, b: 0, a: 0}
@@ -168,5 +201,11 @@ Material:
     - _TillingGrass2: {r: 1, g: 1, b: 0, a: 0}
     - _TillingGravel: {r: 16, g: 16, b: 0, a: 0}
     - _TillingRock: {r: 16, g: 16, b: 0, a: 0}
+    - _TillingTextureParasite: {r: 16, g: 16, b: 0, a: 0}
     - _TillingTextureParasite1: {r: 5, g: 5, b: 0, a: 0}
+    - _Vector0: {r: 16, g: 16, b: 0, a: 0}
+    - _Vector1: {r: 16, g: 16, b: 0, a: 0}
+    - _Vector2: {r: 16, g: 16, b: 0, a: 0}
+    - _Vector4: {r: 5.3, g: 10, b: 0, a: 0}
+    - _VectoryDirection: {r: 5.3, g: 10, b: 0, a: 0}
   m_BuildTextureStacks: []
