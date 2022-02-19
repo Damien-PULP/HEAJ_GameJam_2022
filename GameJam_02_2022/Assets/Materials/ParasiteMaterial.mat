@@ -10,7 +10,7 @@ Material:
   m_Name: ParasiteMaterial
   m_Shader: {fileID: 4800000, guid: 51ef901ee78defb4c9314b22d7683f63, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 0
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -19,6 +19,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Albedo:
+        m_Texture: {fileID: 2800000, guid: 750b1bd7ba8bd28489650de6d0a95cc5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -63,6 +67,10 @@ Material:
         m_Texture: {fileID: 8900000, guid: ef7513b54a0670140b9b967af7620563, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _TextureParasite:
+        m_Texture: {fileID: 2800000, guid: 881c304491028ea48b5027ac6c62cf73, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -90,9 +98,9 @@ Material:
     - _Parallax: 0.02
     - _PortalBorderSize: 0
     - _PortalSize: 0
-    - _Radius: 74.62
+    - _Radius: 127.97
     - _RadiusVirus: 0.1
-    - _SideEffect: -8.39
+    - _SideEffect: 49.9
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -104,8 +112,10 @@ Material:
     - _Color: {r: 0.6603774, g: 0, b: 0, a: 1}
     - _Color0: {r: 0.2110627, g: 0.4811321, b: 0.3049637, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ParasiteColor: {r: 1, g: 0, b: 0, a: 1}
     - _PortalBorderColor: {r: 0.06581525, g: 0.1680098, b: 0.8207547, a: 0}
-    - _Tilling: {r: 1, g: 1, b: 0, a: 0}
+    - _Tilling: {r: 10, g: 10, b: 0, a: 0}
+    - _TillingTextureParasite: {r: 10, g: 10, b: 0, a: 0}
     - _Vector0: {r: 0, g: 0, b: 0, a: 0}
     - _Vector1: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
