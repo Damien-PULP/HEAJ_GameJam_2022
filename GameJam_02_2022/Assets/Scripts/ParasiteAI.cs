@@ -130,6 +130,8 @@ public class ParasiteAI : MonoBehaviour
     }
     private void UpdateShader()
     {
+        m_ParasiteMaterial.SetVector("_CenterPosition", m_CenterWorld);
+        m_TerrainMaterial.SetVector("_CenterPositionWorld", m_CenterWorld);
         m_ParasiteMaterial.SetFloat("_Radius", CurrentRadius);
         m_TerrainMaterial.SetFloat("_RadiusInfection", CurrentRadius);
     }

@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Component Required")]
     public TowerOfPower m_TowerOfPower;
+    public Transform m_TowerTransform;
     public Transform m_TransformToDropEnergy;
     public Transform m_Player;
     public ParasiteAI m_ParasiteAI;
