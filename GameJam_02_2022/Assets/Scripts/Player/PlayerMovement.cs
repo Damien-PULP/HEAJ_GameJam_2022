@@ -113,6 +113,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         Vector3 moveVelocity = MovementDir;
+        moveVelocity.y = Rb.velocity.y;
 
         Rb.velocity = moveVelocity;
     }

@@ -20,8 +20,13 @@ public class InputManager : MonoBehaviour
             s_PlayerControls.PlayerMouvement.Camera.performed += i => InputCamera = i.ReadValue<Vector2>();
             s_PlayerControls.PlayerActions.B.performed += i => B_Input = true;
             s_PlayerControls.PlayerActions.B.canceled += i => B_Input = false;
+            s_PlayerControls.PlayerActions.Drop.performed += i => PickUpInput();
         }
         s_PlayerControls.Enable();
+    }
+    public void PickUpInput()
+    {
+        GameManager.s_Instance.AddEnergyLevel();
     }
     public Vector2 GetInputMovement()
     {

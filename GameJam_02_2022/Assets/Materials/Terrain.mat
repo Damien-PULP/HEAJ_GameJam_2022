@@ -1,0 +1,162 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Terrain
+  m_Shader: {fileID: 4800000, guid: 7c40302cfadb6c042932b3b2af7dac0e, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlbedoDirt:
+        m_Texture: {fileID: 2800000, guid: 81f2a88291c6ba44bb27fc92113f6483, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AlbedoGrass:
+        m_Texture: {fileID: 2800000, guid: 4302b9a817cd07e478653a409bfe6000, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AlbedoGravel:
+        m_Texture: {fileID: 2800000, guid: baa9dd568cea8384ab7a41a4751ade93, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AlbedoRock:
+        m_Texture: {fileID: 2800000, guid: e2743a02d56b8034cad620884cbad28a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskDirtTexture:
+        m_Texture: {fileID: 2800000, guid: 7b561dcae4e75b44ba94aa84b224557d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskGrassTexture:
+        m_Texture: {fileID: 2800000, guid: 3ff6f87c551189b47ae882fd77943ed9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskGravelTexture:
+        m_Texture: {fileID: 2800000, guid: 5ba0118310205464f9b8c2ab072ece29, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskRockTexture:
+        m_Texture: {fileID: 2800000, guid: 9268c92b6f62b1d4ab278bfcba329876, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalDirt:
+        m_Texture: {fileID: 2800000, guid: ae864d70ab91db2478c81e306fa57cde, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalGrass:
+        m_Texture: {fileID: 2800000, guid: dad2ecceb87c1c54a97d39d484405ab0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalGravel:
+        m_Texture: {fileID: 2800000, guid: 528380b1e3c46fc499ec105be3c5e5ee, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalRock:
+        m_Texture: {fileID: 2800000, guid: 6271bd1e73edbd041b8390da6822fd5a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SplatMap:
+        m_Texture: {fileID: 2800000, guid: a08ef57615cfe764fb6bc38911e957bc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TerrainHolesTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TextureParasite1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BorderIntensity: 1.54
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _Radius1: 126.06
+    - _RadiusInfection: 83.927536
+    - _ScaleBorderNoise: 420.78
+    - _ScaleNormalDirt: 0.88
+    - _ScaleNormalGrass: 0.66
+    - _ScaleNormalGravel: 0.67
+    - _ScaleNormalRock: 0.82
+    - _SideEffect1: -4.8
+    - _Smoothness: 0.127
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SpeedNoiseBorder: 0.002
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    - __dirty: 0
+    m_Colors:
+    - _CenterPosition1: {r: 0, g: 0, b: 0, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ParasiteColor1: {r: 1, g: 0, b: 0.67560244, a: 0}
+    - _TillingDirt: {r: 16, g: 16, b: 0, a: 0}
+    - _TillingGrass: {r: 16, g: 16, b: 0, a: 0}
+    - _TillingGrass2: {r: 1, g: 1, b: 0, a: 0}
+    - _TillingGravel: {r: 16, g: 16, b: 0, a: 0}
+    - _TillingRock: {r: 16, g: 16, b: 0, a: 0}
+    - _TillingTextureParasite1: {r: 1, g: 1, b: 0, a: 0}
+  m_BuildTextureStacks: []
