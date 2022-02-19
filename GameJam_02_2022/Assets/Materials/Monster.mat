@@ -99,7 +99,31 @@ Material:
         m_Texture: {fileID: 2800000, guid: 2aff43e50a7a12b4d82002f6e8a89aea, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture0:
+        m_Texture: {fileID: 2800000, guid: 80b4746327cab424caa838fc796c09f5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture1:
+        m_Texture: {fileID: 2800000, guid: 80b4746327cab424caa838fc796c09f5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2:
+        m_Texture: {fileID: 2800000, guid: ecfea6dcf38f9384a8a99b62f0c0c44b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture3:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _TextureSample0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _albedo:
+        m_Texture: {fileID: 2800000, guid: 458d1e0330be1d34ebb4bf79f3794492, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _metallic:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -118,6 +142,7 @@ Material:
     - _Keyword0: 1
     - _Metallic: 0
     - _Mode: 0
+    - _NormalIntensity: 0.5
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SmoothnessIntensity: 1
