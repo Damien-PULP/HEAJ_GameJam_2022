@@ -30,6 +30,7 @@ public class EnemyAI : MonoBehaviour
     [Header("Distance Settings")]
     public float m_DistanceViewPlayer = 50f;
     public float m_DistanceAttack = 4f;
+    public float m_DistanceToWait = 10f;
 
     [Header("Timing Settings")]
     public float m_TimeBetweenAttack = 3f;
@@ -46,6 +47,7 @@ public class EnemyAI : MonoBehaviour
     private Transform CurrentTarget;
     private float DistanceToTarget;
 
+    private bool CanBeAttack = true;
     private float Timer;
 
     private void Start()
@@ -79,6 +81,7 @@ public class EnemyAI : MonoBehaviour
         }
 
         DistanceToTarget = Vector3.Distance(CurrentTarget.position, transform.position);
+        CanBeAttack = GameManager.s_Instance.CheckIfCanBeAttack();
 
         switch (m_CurrentState)
         {
@@ -93,6 +96,10 @@ public class EnemyAI : MonoBehaviour
                 AttackTarget();
                 break;
             case E_State.Idle:
+                if (CanBeAttack)
+                {
+                    SwitchState(E_State.Chase);
+                }
                 break;
             case E_State.Dead:
                 break;
@@ -112,6 +119,9 @@ public class EnemyAI : MonoBehaviour
             case E_State.Impact:
                 break;
             case E_State.Attack:
+                CurrentPos = CurrentTarget.position;
+                NavAgent.SetDestination(CurrentPos);
+                GameManager.s_Instance.IndicEnemyStartAttack();
                 break;
             case E_State.Idle:
                 break;
@@ -141,6 +151,10 @@ public class EnemyAI : MonoBehaviour
             case E_State.Impact:
                 break;
             case E_State.Attack:
+                NavAgent.ResetPath();
+                CurrentPos = CurrentTarget.position;
+                NavAgent.SetDestination(CurrentPos);
+                GameManager.s_Instance.IndicEnemyStopAttack();
                 break;
             case E_State.Idle:
                 break;
@@ -162,14 +176,27 @@ public class EnemyAI : MonoBehaviour
         CurrentPos = CurrentTarget.position;
         NavAgent.SetDestination(CurrentPos);
 
-        if(DistanceToTarget <= m_DistanceAttack)
+        if (CanBeAttack)
         {
-            SwitchState(E_State.Attack);
+            if (DistanceToTarget <= m_DistanceAttack)
+            {
+                SwitchState(E_State.Attack);
+            }
         }
+        else
+        {
+            if (DistanceToTarget <= m_DistanceToWait)
+            {
+                SwitchState(E_State.Idle);
+            }
+        }
+
+
     }
     private void AttackTarget()
     {
-        Vector3 posToLook = new Vector3(CurrentPos.x, transform.position.y, CurrentPos.z);
+
+        Vector3 posToLook = new Vector3(CurrentTarget.position.x, transform.position.y, CurrentTarget.position.z);
         transform.LookAt(posToLook);
         if (!IsAttackNow)
         {
@@ -186,7 +213,7 @@ public class EnemyAI : MonoBehaviour
             {
                 if (hit.transform.CompareTag("Player"))
                 {
-                    Debug.Log("Player is touched");
+                    GameManager.s_Instance.ApplyDamage(m_Damage);
                 }     
             }
 
