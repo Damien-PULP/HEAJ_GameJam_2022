@@ -111,8 +111,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture0:
+        m_Texture: {fileID: 2800000, guid: 7f552bff8573ec64492090f6f4415ca1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _TextureParasite1:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _VirusAlbedo:
+        m_Texture: {fileID: 2800000, guid: 7f552bff8573ec64492090f6f4415ca1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -152,6 +160,7 @@ Material:
     - _CenterPosition1: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ParasiteCOlor: {r: 1, g: 0, b: 0.91517925, a: 0}
     - _ParasiteColor1: {r: 1, g: 0, b: 0.67560244, a: 0}
     - _TillingDirt: {r: 16, g: 16, b: 0, a: 0}
     - _TillingGrass: {r: 16, g: 16, b: 0, a: 0}
