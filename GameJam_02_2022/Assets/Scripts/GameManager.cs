@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
     public Transform m_TowerTransform;
     public Transform m_TransformToDropEnergy;
     public Transform m_Player;
+    public PlayerMovement m_PlayerMovement;
     public ParasiteAI m_ParasiteAI;
     public CanvasManager m_CanvasManager;
 
@@ -132,6 +133,7 @@ public class GameManager : MonoBehaviour
                 // END GAME WIN
                 break;
             case E_State.GameOver:
+                m_PlayerMovement.SwitchState(PlayerMovement.E_State.Dead);
                 break;
             default:
                 break;
