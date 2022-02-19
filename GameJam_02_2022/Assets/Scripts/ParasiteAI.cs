@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class ParasiteAI : MonoBehaviour
 {
+    public static ParasiteAI s_Instance;
     [Header("Parasite and Dome Settings")]
     public Vector3 m_CenterWorld = Vector3.zero;
     public float m_Radius = 250f;
@@ -44,6 +45,17 @@ public class ParasiteAI : MonoBehaviour
 
     private List<GameObject> EnemyWave = new List<GameObject>();
 
+    private void Awake()
+    {
+        if (s_Instance)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            s_Instance = this;
+        }
+    }
     private void Start()
     {
         MaxTimeInvasion = GameManager.s_Instance.m_MaxTimeInvasion;
@@ -58,7 +70,7 @@ public class ParasiteAI : MonoBehaviour
 
     private void UpdateSpawner()
     {
-        if(CurrentItemInWave <= 0f)
+        if(CurrentItemInWave <= 0)
         {
             Timer += Time.deltaTime;
         }
@@ -134,6 +146,12 @@ public class ParasiteAI : MonoBehaviour
         m_TerrainMaterial.SetVector("_CenterPositionWorld", m_CenterWorld);
         m_ParasiteMaterial.SetFloat("_Radius", CurrentRadius);
         m_TerrainMaterial.SetFloat("_RadiusInfection", CurrentRadius);
+    }
+
+    public void RemoveAEnemy(GameObject enemy)
+    {
+        EnemyWave.Remove(enemy);
+        CurrentItemInWave--;
     }
 
     private void OnDrawGizmosSelected()
