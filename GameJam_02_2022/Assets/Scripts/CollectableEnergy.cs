@@ -11,7 +11,8 @@ public class CollectableEnergy : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.s_Instance.AddEnerrgyLevel(m_Point);
+            bool isPossibleToCollect = GameManager.s_Instance.CollectEnergy(m_Point);
+            if (!isPossibleToCollect) return;
             if (m_DestroyParticle)
             {
                 Instantiate(m_DestroyParticle, transform.position, transform.rotation);    
