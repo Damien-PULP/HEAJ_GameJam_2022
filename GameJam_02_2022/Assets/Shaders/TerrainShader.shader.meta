@@ -3,9 +3,9 @@ guid: 7c40302cfadb6c042932b3b2af7dac0e
 ShaderImporter:
   externalObjects: {}
   defaultTextures:
+  - _TextureMasks: {fileID: 2800000, guid: 9cbf769917ac556408f9140286468c2f, type: 3}
   - _TextureParasite: {fileID: 2800000, guid: 0d1508541d32f0840840edcac1f44747, type: 3}
   - _TextureParasiteAlbedo: {fileID: 2800000, guid: 20c81e09508a5ec4fba65a8abee04320, type: 3}
-  - _TextureMasks: {fileID: 2800000, guid: 9cbf769917ac556408f9140286468c2f, type: 3}
   nonModifiableTextures: []
   preprocessorOverride: 0
   userData: 

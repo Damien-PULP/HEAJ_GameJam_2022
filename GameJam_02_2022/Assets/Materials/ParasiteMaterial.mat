@@ -98,7 +98,7 @@ Material:
     - _Parallax: 0.02
     - _PortalBorderSize: 0
     - _PortalSize: 0
-    - _Radius: 34.681652
+    - _Radius: 0
     - _RadiusVirus: 0.1
     - _SideEffect: -0.3
     - _SmoothnessTextureChannel: 0
