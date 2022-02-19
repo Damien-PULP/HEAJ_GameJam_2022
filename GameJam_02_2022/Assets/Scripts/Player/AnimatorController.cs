@@ -10,8 +10,23 @@ public class AnimatorController : MonoBehaviour
     public string m_VerticalParams = "Vertical";
     public string m_SimpleAttackParams = "SimpleAttack";
     public string m_SpeelAttackParams = "SpeelAttack";
+    public string m_DeadParams = "Dead";
+    public float m_TimeAnimationDead = 2.8f;
+    private bool isDead;
+    private float Timer;
 
-
+    private void Update()
+    {
+        if (isDead)
+        {
+            Timer += Time.deltaTime;
+            if(Timer >= m_TimeAnimationDead)
+            {
+                m_Animator.enabled = false;
+                isDead = false;
+            }
+        }
+    }
     public void UpdateAnimator(float horizontalMovement, float verticalMovement)
     {
         m_Animator.SetFloat(m_HorizontalParams, horizontalMovement, 0.1f, Time.deltaTime);
@@ -23,7 +38,11 @@ public class AnimatorController : MonoBehaviour
     }
     public void SpeelAttack()
     {
-        Debug.Log("Speel");
         m_Animator.SetTrigger(m_SpeelAttackParams);
+    }
+    public void Dead()
+    {
+        m_Animator.SetTrigger(m_DeadParams);
+        isDead = true;
     }
 }
