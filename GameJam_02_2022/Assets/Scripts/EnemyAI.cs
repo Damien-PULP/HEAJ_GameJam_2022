@@ -34,7 +34,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        float distanceToTower = Vector3.Distance(TowerTarget.position, transform.position);
+
         float distanceToPlayer = Vector3.Distance(PlayerTarget.position, transform.position);
 
         if(distanceToPlayer <= m_DistanceViewPlayer)
@@ -42,15 +42,15 @@ public class EnemyAI : MonoBehaviour
             if (CurrentTarget != PlayerTarget)
             {
                 CurrentTarget = PlayerTarget;
-                Debug.Log("Change transform target to player");
             }
         }
         else
         {
-
                 CurrentTarget = TowerTarget;
-                Debug.Log("Change transform target to tower");
         }
+
+        float distanceToTarget = Vector3.Distance(CurrentTarget.position, transform.position);
+
         CurrentPos = CurrentTarget.position;
         NavAgent.destination = CurrentPos;
     }
