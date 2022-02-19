@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float m_RunSpeed = 6f;
     public float m_SprintSpeed = 9f;
     public float m_RotationSpeed = 15f;
+    public float m_HorizontalFactorSpeed = 0.5f;
 
     [Header("Required Components")]
     public InputManager m_InputManager;
@@ -95,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
     public void HandleMovement()
     {
         MovementDir = MainCamTransform.forward * VerticalInput; // Vertical Input
-        MovementDir += MainCamTransform.right * HorizontalInput; // Horizontal Input
+        MovementDir += MainCamTransform.right * HorizontalInput * m_HorizontalFactorSpeed; // Horizontal Input
         MovementDir.Normalize();
         MovementDir.y = 0f;
 
@@ -132,5 +133,13 @@ public class PlayerMovement : MonoBehaviour
         Quaternion playerRot = Quaternion.Slerp(transform.rotation, targetRot, m_RotationSpeed * Time.fixedDeltaTime);
 
         transform.rotation = playerRot;
+    }
+    public void SimpleAttack()
+    {
+        if (m_AnimatorController) m_AnimatorController.SimpleAttack();
+    }
+    public void SpeelAttack()
+    {
+        if (m_AnimatorController) m_AnimatorController.SpeelAttack();
     }
 }
