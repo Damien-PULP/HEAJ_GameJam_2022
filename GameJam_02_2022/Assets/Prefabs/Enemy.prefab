@@ -77,6 +77,7 @@ MonoBehaviour:
   m_Speed: 13
   m_DistanceViewPlayer: 100
   m_DistanceAttack: 3
+  m_DistanceToWait: 10
   m_TimeBetweenAttack: 3
   m_IgnoreLayerAttack:
     serializedVersion: 2
@@ -188,6 +189,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5907424440797658306, guid: 8c0e09395f8f29c458eed19f60b46bbd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 92d7e8716646f5b4d8bf2d54769747de, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c0e09395f8f29c458eed19f60b46bbd, type: 3}
 --- !u!4 &4002231768144556132 stripped
