@@ -278,7 +278,7 @@ Shader "Custom/SpellShader"
 }
 /*ASEBEGIN
 Version=18917
-1913;88;1920;923;730.178;581.2783;1;True;False
+1913;88;1920;923;2313.528;1371.839;1.898704;True;False
 Node;AmplifyShaderEditor.CommentaryNode;101;-1615.308,603.6752;Inherit;False;2644;579.0001;Distorsion;14;88;89;91;90;92;93;95;96;94;97;98;99;100;102;;1,1,1,1;0;0
 Node;AmplifyShaderEditor.CommentaryNode;67;-1457.883,-264.9297;Inherit;False;1999.482;642.6024;PatternColor;14;66;63;64;65;62;59;60;57;61;58;56;54;55;53;;1,1,1,1;0;0
 Node;AmplifyShaderEditor.RangedFloatNode;53;-1407.883,-49.08477;Inherit;False;Property;_Scrolling;Scrolling;1;0;Create;True;0;0;0;False;0;False;0;0.5;0;4;0;1;FLOAT;0
@@ -290,46 +290,46 @@ Node;AmplifyShaderEditor.RangedFloatNode;90;-1323.308,904.6752;Inherit;False;Pro
 Node;AmplifyShaderEditor.SimpleTimeNode;91;-1213.308,1037.675;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;56;-1048.306,-54.92974;Inherit;False;3;3;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.TexCoordVertexDataNode;102;-1065.066,671.3969;Inherit;False;0;2;0;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.FunctionNode;88;-867.0856,794.1325;Inherit;True;Twirl;-1;;4;90936742ac32db8449cd21ab6dd337c8;0;4;1;FLOAT2;0,0;False;2;FLOAT2;0,0;False;3;FLOAT;0;False;4;FLOAT2;0,0;False;1;FLOAT2;0
-Node;AmplifyShaderEditor.NegateNode;61;-952.3057,112.0703;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.CommentaryNode;79;-1500.46,-1006.285;Inherit;False;1741;661;Vertex Displacement;11;68;69;70;71;72;73;74;75;76;77;78;;1,1,1,1;0;0
-Node;AmplifyShaderEditor.Vector2Node;58;-1008.306,-214.9297;Inherit;False;Constant;_Vector0;Vector 0;0;0;Create;True;0;0;0;False;0;False;1,1;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
 Node;AmplifyShaderEditor.RangedFloatNode;94;-649.3083,1037.675;Inherit;False;Property;_DistorsionScale;Distorsion Scale;11;0;Create;True;0;0;0;False;0;False;4;4;0;10;0;1;FLOAT;0
+Node;AmplifyShaderEditor.Vector2Node;58;-1008.306,-214.9297;Inherit;False;Constant;_Vector0;Vector 0;0;0;Create;True;0;0;0;False;0;False;1,1;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
+Node;AmplifyShaderEditor.NegateNode;61;-952.3057,112.0703;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.FunctionNode;88;-867.0856,794.1325;Inherit;True;Twirl;-1;;4;90936742ac32db8449cd21ab6dd337c8;0;4;1;FLOAT2;0,0;False;2;FLOAT2;0,0;False;3;FLOAT;0;False;4;FLOAT2;0,0;False;1;FLOAT2;0
+Node;AmplifyShaderEditor.CommentaryNode;79;-1382.156,-1006.285;Inherit;False;1741;661;Vertex Displacement;11;68;69;70;71;72;73;74;75;76;77;78;;1,1,1,1;0;0
 Node;AmplifyShaderEditor.TextureCoordinatesNode;57;-746.3056,-147.9297;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.CommentaryNode;86;682.3145,-940.9154;Inherit;False;1250.519;483.825;Fresnel Color;6;80;81;82;83;84;85;;1,1,1,1;0;0
 Node;AmplifyShaderEditor.RangedFloatNode;96;-362.3083,1066.675;Inherit;False;Property;_Float4;Float 4;12;0;Create;True;0;0;0;False;0;False;1;1;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.TextureCoordinatesNode;60;-798.3057,113.0703;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.NoiseGeneratorNode;93;-491.3083,844.6752;Inherit;False;Simplex2D;True;False;2;0;FLOAT2;0,0;False;1;FLOAT;1;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;68;-1450.46,-773.2849;Inherit;False;Property;_Float0;Float 0;4;0;Create;True;0;0;0;False;0;False;0;0.5;0;1;0;1;FLOAT;0
-Node;AmplifyShaderEditor.SimpleTimeNode;69;-1135.46,-724.2849;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0
-Node;AmplifyShaderEditor.ScreenPosInputsNode;98;154.6917,653.6752;Float;False;0;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.RangedFloatNode;81;732.3145,-573.0905;Inherit;False;Property;_FresnelPower;FresnelPower;7;0;Create;True;0;0;0;False;0;False;0;5;0;10;0;1;FLOAT;0
-Node;AmplifyShaderEditor.FunctionNode;95;-80.3083,879.6752;Inherit;False;Normal From Height;-1;;5;1942fe2c5f1a1f94881a33d532e4afeb;0;2;20;FLOAT;0;False;110;FLOAT;1;False;2;FLOAT3;40;FLOAT3;0
-Node;AmplifyShaderEditor.RangedFloatNode;80;732.6238,-671.6833;Inherit;False;Property;_FresnelIntensity;Fresnel Intensity;6;0;Create;True;0;0;0;False;0;False;1;1;0;4;0;1;FLOAT;0
-Node;AmplifyShaderEditor.PosVertexDataNode;71;-1241.46,-956.2849;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.RangedFloatNode;68;-1332.156,-773.2849;Inherit;False;Property;_Float0;Float 0;4;0;Create;True;0;0;0;False;0;False;0;0.5;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SamplerNode;59;-508.3056,-177.9297;Inherit;True;Property;_TextureSample0;Texture Sample 0;0;0;Create;True;0;0;0;False;0;False;-1;None;6bce0bc1afd7b69408ab33eddacaacbc;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SamplerNode;62;-486.2685,153.6726;Inherit;True;Property;_TextureSample1;Texture Sample 1;2;0;Create;True;0;0;0;False;0;False;-1;None;6bce0bc1afd7b69408ab33eddacaacbc;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.SimpleAddOpNode;63;-155.2685,78.67262;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.SimpleAddOpNode;70;-921.4598,-767.2849;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0
-Node;AmplifyShaderEditor.ColorNode;65;-130.5157,-180.8224;Inherit;False;Property;_PatternColor;PatternColor;3;1;[HDR];Create;True;0;0;0;False;0;False;0,0,0,0;0.9254902,0.1803921,0.8928404,0.1843137;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.RangedFloatNode;73;-1045.46,-587.2849;Inherit;False;Property;_Float1;Float 1;5;0;Create;True;0;0;0;False;0;False;0;2;1;12;0;1;FLOAT;0
-Node;AmplifyShaderEditor.ColorNode;84;1260.833,-890.9154;Inherit;False;Property;_Color0;Color 0;8;1;[HDR];Create;True;0;0;0;False;0;False;0,9.849155,9.656034,0;0,9.849155,9.656034,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.SimpleAddOpNode;97;374.6917,822.6752;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT4;0,0,0,0;False;1;FLOAT4;0
+Node;AmplifyShaderEditor.RangedFloatNode;80;732.6238,-671.6833;Inherit;False;Property;_FresnelIntensity;Fresnel Intensity;6;0;Create;True;0;0;0;False;0;False;1;1;0;4;0;1;FLOAT;0
+Node;AmplifyShaderEditor.PosVertexDataNode;71;-1123.156,-956.2849;Inherit;False;0;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.RangedFloatNode;81;732.3145,-573.0905;Inherit;False;Property;_FresnelPower;FresnelPower;7;0;Create;True;0;0;0;False;0;False;0;5;0;10;0;1;FLOAT;0
+Node;AmplifyShaderEditor.FunctionNode;95;-80.3083,879.6752;Inherit;False;Normal From Height;-1;;5;1942fe2c5f1a1f94881a33d532e4afeb;0;2;20;FLOAT;0;False;110;FLOAT;1;False;2;FLOAT3;40;FLOAT3;0
+Node;AmplifyShaderEditor.ScreenPosInputsNode;98;154.6917,653.6752;Float;False;0;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.SimpleTimeNode;69;-1017.156,-724.2849;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.FresnelNode;82;1190.266,-688.3947;Inherit;False;Standard;WorldNormal;ViewDir;False;False;5;0;FLOAT3;0,0,1;False;4;FLOAT3;0,0,0;False;1;FLOAT;0;False;2;FLOAT;1;False;3;FLOAT;5;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;76;-551.4597,-575.2849;Inherit;False;Constant;_DisplacementRange;Displacement Range;5;0;Create;True;0;0;0;False;0;False;0.5;0;0;1;0;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;77;-433.4597,-461.2849;Inherit;False;Constant;_Float2;Float 2;5;0;Create;True;0;0;0;False;0;False;0.1;0;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.NormalVertexDataNode;75;-570.4597,-845.2849;Inherit;False;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.ScreenColorNode;99;591.6917,839.6752;Inherit;False;Global;_GrabScreen0;Grab Screen 0;11;0;Create;True;0;0;0;False;0;False;Object;-1;False;False;False;2;0;FLOAT2;0,0;False;1;FLOAT;0;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.NoiseGeneratorNode;72;-759.4598,-716.2849;Inherit;False;Simplex2D;True;False;2;0;FLOAT2;0,0;False;1;FLOAT;1;False;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleAddOpNode;97;374.6917,822.6752;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT4;0,0,0,0;False;1;FLOAT4;0
+Node;AmplifyShaderEditor.ColorNode;65;-103.9414,161.1;Inherit;False;Property;_PatternColor;PatternColor;3;1;[HDR];Create;True;0;0;0;False;0;False;0,0,0,0;0.5225452,1.459523,2.090181,0.1843137;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.RangedFloatNode;73;-927.1558,-587.2849;Inherit;False;Property;_Float1;Float 1;5;0;Create;True;0;0;0;False;0;False;0;2;1;12;0;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleAddOpNode;70;-803.1557,-767.2849;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0
+Node;AmplifyShaderEditor.ColorNode;84;1260.833,-890.9154;Inherit;False;Property;_Color0;Color 0;8;1;[HDR];Create;True;0;0;0;False;0;False;0,9.849155,9.656034,0;0.6486768,1.891974,3.351497,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.SimpleAddOpNode;63;-153.4969,-98.48921;Inherit;True;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;64;104.3734,-181.583;Inherit;True;2;2;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.NoiseGeneratorNode;72;-641.1557,-716.2849;Inherit;False;Simplex2D;True;False;2;0;FLOAT2;0,0;False;1;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;83;1489.833,-761.9154;Inherit;True;2;2;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;64;72.4843,-16.82238;Inherit;True;2;2;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.NormalVertexDataNode;75;-452.1556,-845.2849;Inherit;False;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.RangedFloatNode;77;-315.1556,-461.2849;Inherit;False;Constant;_Float2;Float 2;5;0;Create;True;0;0;0;False;0;False;0.1;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;76;-433.1556,-575.2849;Inherit;False;Constant;_DisplacementRange;Displacement Range;5;0;Create;True;0;0;0;False;0;False;0.5;0;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.ScreenColorNode;99;591.6917,839.6752;Inherit;False;Global;_GrabScreen0;Grab Screen 0;11;0;Create;True;0;0;0;False;0;False;Object;-1;False;False;False;2;0;FLOAT2;0,0;False;1;FLOAT;0;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.RegisterLocalVarNode;100;804.6917,882.6752;Inherit;False;Distorsion;-1;True;1;0;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.RegisterLocalVarNode;66;291.5993,25.2664;Inherit;False;PatternColor;-1;True;1;0;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.RegisterLocalVarNode;85;1708.833,-731.9154;Inherit;False;FresnelColor;-1;True;1;0;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;74;-194.4596,-669.2849;Inherit;False;4;4;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT3;0
+Node;AmplifyShaderEditor.RegisterLocalVarNode;66;342.9762,-111.1482;Inherit;False;PatternColor;-1;True;1;0;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;74;-76.15549,-669.2849;Inherit;False;4;4;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;2;FLOAT;0;False;3;FLOAT;0;False;1;FLOAT3;0
 Node;AmplifyShaderEditor.GetLocalVarNode;51;923.8607,-5.260791;Inherit;False;66;PatternColor;1;0;OBJECT;;False;1;COLOR;0
 Node;AmplifyShaderEditor.GetLocalVarNode;49;921.8041,-100.2384;Inherit;False;100;Distorsion;1;0;OBJECT;;False;1;COLOR;0
-Node;AmplifyShaderEditor.RegisterLocalVarNode;78;-6.459566,-633.2849;Inherit;False;VertexDisplacment;-1;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0
+Node;AmplifyShaderEditor.RegisterLocalVarNode;78;111.8445,-633.2849;Inherit;False;VertexDisplacment;-1;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0
 Node;AmplifyShaderEditor.GetLocalVarNode;50;939.3688,79.75001;Inherit;False;85;FresnelColor;1;0;OBJECT;;False;1;COLOR;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;48;1147.062,-16.45345;Inherit;False;3;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.GetLocalVarNode;52;990.2089,223.2285;Inherit;False;78;VertexDisplacment;1;0;OBJECT;;False;1;FLOAT3;0
@@ -338,40 +338,40 @@ WireConnection;91;0;92;0
 WireConnection;56;0;55;0
 WireConnection;56;1;53;0
 WireConnection;56;2;54;0
+WireConnection;61;0;56;0
 WireConnection;88;1;102;0
 WireConnection;88;2;89;0
 WireConnection;88;3;90;0
 WireConnection;88;4;91;0
-WireConnection;61;0;56;0
 WireConnection;57;0;58;0
 WireConnection;57;1;56;0
 WireConnection;60;0;58;0
 WireConnection;60;1;61;0
 WireConnection;93;0;88;0
 WireConnection;93;1;94;0
-WireConnection;69;0;68;0
-WireConnection;95;20;93;0
-WireConnection;95;110;96;0
 WireConnection;59;1;57;0
 WireConnection;62;1;60;0
-WireConnection;63;0;62;3
-WireConnection;63;1;59;3
-WireConnection;70;0;69;0
-WireConnection;70;1;71;0
-WireConnection;97;0;95;40
-WireConnection;97;1;98;0
+WireConnection;95;20;93;0
+WireConnection;95;110;96;0
+WireConnection;69;0;68;0
 WireConnection;82;2;80;0
 WireConnection;82;3;81;0
-WireConnection;99;0;97;0
+WireConnection;97;0;95;40
+WireConnection;97;1;98;0
+WireConnection;70;0;69;0
+WireConnection;70;1;71;0
+WireConnection;63;0;62;3
+WireConnection;63;1;59;3
+WireConnection;64;0;63;0
+WireConnection;64;1;65;0
 WireConnection;72;0;70;0
 WireConnection;72;1;73;0
 WireConnection;83;0;82;0
 WireConnection;83;1;84;0
-WireConnection;64;0;63;0
-WireConnection;64;1;65;0
+WireConnection;99;0;97;0
 WireConnection;100;0;99;0
-WireConnection;66;0;64;0
 WireConnection;85;0;83;0
+WireConnection;66;0;64;0
 WireConnection;74;0;72;0
 WireConnection;74;1;75;0
 WireConnection;74;2;76;0
@@ -384,4 +384,4 @@ WireConnection;47;2;48;0
 WireConnection;47;9;48;0
 WireConnection;47;11;52;0
 ASEEND*/
-//CHKSM=9A295A704EAD9F9485520FB6D9B71ACEBDF20748
+//CHKSM=AFF0262676C5661213932BF6ED91896449B3481B
