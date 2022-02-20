@@ -13,9 +13,14 @@ public class InputManager : MonoBehaviour
 
     private bool B_Input;
 
-    private void OnEnable()
+    private void Awake()
     {
-        if(s_PlayerControls == null)
+        //DontDestroyOnLoad(gameObject);
+       // s_PlayerControls.Enable();
+    }
+    private void Start()
+    {
+        if (s_PlayerControls == null)
         {
             s_PlayerControls = new PlayerControls();
             s_PlayerControls.PlayerMouvement.Movement.performed += i => InputMovement = i.ReadValue<Vector2>();
@@ -27,6 +32,10 @@ public class InputManager : MonoBehaviour
             s_PlayerControls.PlayerActions.Fire2.performed += i => Fire2();
         }
         s_PlayerControls.Enable();
+    }
+    private void OnEnable()
+    {
+
     }
     public void PickUpInput()
     {
@@ -56,6 +65,6 @@ public class InputManager : MonoBehaviour
 
     private void OnDisable()
     {
-        s_PlayerControls.Disable();
+        //s_PlayerControls.Disable();
     }
 }

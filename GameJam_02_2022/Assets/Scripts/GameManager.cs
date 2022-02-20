@@ -133,7 +133,8 @@ public class GameManager : MonoBehaviour
                 SwitchState(E_State.InGame);
                 break;
             case E_State.EndGame:
-                m_TowerOfPower.UpdateTower();    
+                m_TowerOfPower.UpdateTower();
+                m_CanvasManager.ShowWin();
                 // END GAME WIN
                 break;
             case E_State.GameOver:
@@ -343,7 +344,7 @@ public class GameManager : MonoBehaviour
 
         if(Timer >= m_RestartTime)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
         
     }
