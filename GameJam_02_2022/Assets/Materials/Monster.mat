@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Monster
   m_Shader: {fileID: 4800000, guid: 5a10e8be5fdf43240bc8b2ca2b04c2c6, type: 3}
-  m_ShaderKeywords: _KEYWORD0_ON
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -100,7 +100,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture0:
-        m_Texture: {fileID: 2800000, guid: 80b4746327cab424caa838fc796c09f5, type: 3}
+        m_Texture: {fileID: 2800000, guid: a2557091b72ca344e9c6e6d08f0f2cb4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture1:
@@ -108,7 +108,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2:
-        m_Texture: {fileID: 2800000, guid: ecfea6dcf38f9384a8a99b62f0c0c44b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 02f1b3c068bba924cb0f23dbb4d63e5e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture3:
@@ -120,7 +120,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _albedo:
-        m_Texture: {fileID: 2800000, guid: 458d1e0330be1d34ebb4bf79f3794492, type: 3}
+        m_Texture: {fileID: 2800000, guid: 451d2d2cd0874a541a3a2cd0f00d5bb8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _metallic:
@@ -139,10 +139,10 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Keyword0: 1
+    - _Keyword0: 0
     - _Metallic: 0
     - _Mode: 0
-    - _NormalIntensity: 0.2
+    - _NormalIntensity: 0.79
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _RoughnessIntensity: 0.55
