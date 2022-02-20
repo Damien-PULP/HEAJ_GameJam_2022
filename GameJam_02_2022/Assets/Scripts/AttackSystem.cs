@@ -4,12 +4,121 @@ using UnityEngine;
 
 public class AttackSystem : MonoBehaviour
 {
+    [Header("Simple Attack")]
+    public Transform m_SimpleAttackAnchor;
+    public float m_MaxDistanceSimpleAttack = 2f;
+    public float m_RadiusSimpleAttack = 2f;
+    public float m_DamageSimpleAttack = 25f;
+    public float m_TimeBeforeDamage = 0.5f;
+    public float m_TimeBetweenSimpleAttack = 1.5f;
+
+    private float Timer;
+    private bool IsSimpleAttack;
+    private bool DamageApply;
+
+    [Header("Spell Attack")]
+    public Transform m_AnchorSpellFire;
+    public GameObject m_SpellBullet;
+    public float m_DamageSpell = 100f;
+    public float m_SpeedBullet = 10f;
+    public float m_ForceRedirection = 5f;
+    public float m_DistanceToStopRedirection = 3f;
+    public float m_TimeBeforeFireSpell = 1f;
+    public float m_TimeBetweenSpellAttack = 2.6f;
+    public float m_MaxDistanceToAim = 100f;
+    public LayerMask m_LayerIgnoredByAim;
+
+    private bool IsSpeelAttack;
+    private bool AlredyFire;
+    private Vector3 PositionTargetFire;
+
+    [Header("Required Component")]
+    public PlayerMovement m_PlayerMovement;
+
+    private void Update()
+    {
+        if(IsSimpleAttack == true)
+        {
+            Timer += Time.deltaTime;
+            if(Timer >= m_TimeBeforeDamage && !DamageApply)
+            {
+                RaycastHit hit;
+                if (Physics.SphereCast(m_SimpleAttackAnchor.position, m_RadiusSimpleAttack , m_SimpleAttackAnchor.forward, out hit, m_MaxDistanceSimpleAttack))
+                {
+                    if (hit.transform.CompareTag("Enemy"))
+                    {
+                        EnemyAI enemy = hit.transform.GetComponent<EnemyAI>();
+                        enemy.ApplyDamage(m_DamageSimpleAttack);
+                        Debug.Log("ENemyTouched");
+                    }
+                }
+                DamageApply = true;
+            }
+            if(Timer >= m_TimeBetweenSimpleAttack)
+            {
+                Timer = 0f;
+                DamageApply = false;
+                IsSimpleAttack = false;
+            }
+        }
+        if (IsSpeelAttack)
+        {
+            Timer += Time.deltaTime;
+            if (Timer >= m_TimeBeforeFireSpell &&!AlredyFire)
+            {
+                GameObject bulletInstance = (Instantiate(m_SpellBullet, m_AnchorSpellFire.position, m_SpellBullet.transform.rotation));
+                /*Rigidbody rb = bulletInstance.GetComponent<Rigidbody>();
+                Bullet bullet = bulletInstance.GetComponent<Bullet>();
+                bullet.SetDamage(m_DamageSpell);
+                rb.AddForce(transform.forward * m_SpeedBullet, ForceMode.Impulse);*/
+                BulletSemiHoming bulletHoming = bulletInstance.GetComponent<BulletSemiHoming>();
+                bulletHoming.Shoot(PositionTargetFire, m_SpeedBullet, m_ForceRedirection, m_DistanceToStopRedirection, m_DamageSpell);
+
+                AlredyFire = true;
+            }
+            if (Timer >= m_TimeBetweenSpellAttack)
+            {
+                Timer = 0f;
+                IsSpeelAttack = false;
+                AlredyFire = false;
+            }
+        }
+        Aim();
+    }
     public void SimpleAttack()
     {
-
+        if (IsSpeelAttack) return;
+        if(!IsSimpleAttack) m_PlayerMovement.SimpleAttack();
+        IsSimpleAttack = true;
     }
+
     public void SpellAttack()
     {
+        if (IsSimpleAttack) return;
+        if(!IsSpeelAttack) m_PlayerMovement.SpeelAttack();
+        IsSpeelAttack = true;
+    }
 
+    private void Aim()
+    {
+        // Raycast
+        Ray rayMouseScreen = Camera.main.ScreenPointToRay(new Vector3(Screen.width /2f,Screen.height/2f,0f));
+        RaycastHit hitOfMouseScreen;
+
+        if (Physics.Raycast(rayMouseScreen, out hitOfMouseScreen, m_MaxDistanceToAim, ~m_LayerIgnoredByAim))
+        {
+            PositionTargetFire = hitOfMouseScreen.point;
+            Debug.Log(hitOfMouseScreen.transform.name);
+        }
+        else
+        {
+            // Nothing object aimed : lock the direction to forward
+            PositionTargetFire = new Vector3(rayMouseScreen.origin.x, rayMouseScreen.origin.y, transform.position.z + m_MaxDistanceToAim);
+        }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(PositionTargetFire, 1f);
     }
 }
