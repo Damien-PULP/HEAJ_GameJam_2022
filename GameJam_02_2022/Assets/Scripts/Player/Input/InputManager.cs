@@ -6,6 +6,7 @@ public class InputManager : MonoBehaviour
 {
     public static PlayerControls s_PlayerControls;
     public PlayerMovement m_PlayerMovement;
+    public AttackSystem m_AttackSystem;
 
     private Vector2 InputMovement;
     private Vector2 InputCamera;
@@ -33,11 +34,11 @@ public class InputManager : MonoBehaviour
     }
     public void Fire1()
     {
-        m_PlayerMovement.SimpleAttack();
+        m_AttackSystem.SimpleAttack();
     }
     public void Fire2()
     {
-        m_PlayerMovement.SpeelAttack();
+        m_AttackSystem.SpellAttack();
     }
     public Vector2 GetInputMovement()
     {

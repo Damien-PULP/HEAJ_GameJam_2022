@@ -58,7 +58,7 @@ Shader "Custom/BasicORMShader"
 }
 /*ASEBEGIN
 Version=18917
-484;73;1208;709;731.7573;302.6739;1.020425;True;False
+484;73;1208;709;712.6886;296.0455;1;True;False
 Node;AmplifyShaderEditor.TexturePropertyNode;6;-949.5,762.5;Inherit;True;Property;_ORM;ORM;2;1;[NoScaleOffset];Create;True;0;0;0;False;0;False;None;None;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
 Node;AmplifyShaderEditor.TexturePropertyNode;4;-903.5,269.5;Inherit;True;Property;_Normal;Normal;1;1;[NoScaleOffset];Create;True;0;0;0;False;0;False;None;None;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
 Node;AmplifyShaderEditor.RangedFloatNode;7;-860,472.5;Inherit;False;Property;_NormalIntensity;NormalIntensity;3;0;Create;True;0;0;0;False;0;False;0.5;0;0;0;0;1;FLOAT;0
@@ -94,4 +94,4 @@ WireConnection;0;3;5;3
 WireConnection;0;4;10;0
 WireConnection;0;5;5;1
 ASEEND*/
-//CHKSM=1DC7FFF021EF1E80B826D4D65E3F0693CD7964C5
+//CHKSM=16EA074B7F3D23B7B2F73239CE1A4239D483FC0F
