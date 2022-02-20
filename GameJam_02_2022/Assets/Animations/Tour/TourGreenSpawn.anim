@@ -802,7 +802,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 10.654873
+        value: 3.0598083
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -812,8 +812,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.38333333
         value: 5.7725496
-        inSlope: -7.298157
-        outSlope: -7.298157
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -839,7 +839,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 22.363525
+        value: 6.422235
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -849,8 +849,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.38333333
         value: 11.984316
-        inSlope: -15.318111
-        outSlope: -15.318111
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -950,7 +950,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 23.940481
+        value: 7.9417806
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -960,8 +960,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.38333333
         value: 11.168629
-        inSlope: -16.894459
-        outSlope: -16.894459
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -987,7 +987,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 25.688942
+        value: 8.474191
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -997,8 +997,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.38333333
         value: 11.984316
-        inSlope: -18.128323
-        outSlope: -18.128323
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -3116,7 +3116,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 10.654873
+        value: 3.0598083
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -3126,8 +3126,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.38333333
         value: 5.7725496
-        inSlope: -7.298157
-        outSlope: -7.298157
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -3153,7 +3153,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 22.363525
+        value: 6.422235
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -3163,8 +3163,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.38333333
         value: 11.984316
-        inSlope: -15.318111
-        outSlope: -15.318111
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -3264,7 +3264,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 23.940481
+        value: 7.9417806
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -3274,8 +3274,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.38333333
         value: 11.168629
-        inSlope: -16.894459
-        outSlope: -16.894459
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -3301,7 +3301,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 25.688942
+        value: 8.474191
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -3311,8 +3311,8 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.38333333
         value: 11.984316
-        inSlope: -18.128323
-        outSlope: -18.128323
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
