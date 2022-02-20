@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: HeroMaterial
   m_Shader: {fileID: 4800000, guid: 77e71be67e4b99e43a47b672318af6c3, type: 3}
-  m_ShaderKeywords: _INVERSEYNORMAL_ON
+  m_ShaderKeywords: 
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Albedo:
-        m_Texture: {fileID: 2800000, guid: d457c0aada0f2944db1623fe66df85af, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6d74793159f021c439b44a3ab2c0663e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -44,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emissive:
-        m_Texture: {fileID: 2800000, guid: cc6dfd0fb41350e4c90a2a4d30114688, type: 3}
+        m_Texture: {fileID: 2800000, guid: cb268895d8d678e43806f9815f4efed6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -56,11 +56,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: 78a9ea62393ac0c4cb25a7593f98355a, type: 3}
+        m_Texture: {fileID: 2800000, guid: b9d54173aa5c22940a0f7a538120ccb2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ORM:
-        m_Texture: {fileID: 2800000, guid: bc5825312e9b9c64caae451c16f73191, type: 3}
+        m_Texture: {fileID: 2800000, guid: f6bcc44711a289744a1f68127fd6a2ca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -83,7 +83,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _InverseYNormal: 1
+    - _InverseYNormal: 0
     - _MaxIntensityFlash: 1
     - _Metallic: 0
     - _MinIntensityFlash: 0
@@ -92,7 +92,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _PercentEmission: 1
-    - _RoughnessIntensity: 1.253
+    - _RoughnessIntensity: 0.878
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SpeedFlashEmission: 1

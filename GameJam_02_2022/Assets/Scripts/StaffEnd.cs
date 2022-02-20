@@ -15,4 +15,18 @@ public class StaffEnd : MonoBehaviour
     {
         Active = active;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (Active)
+        {
+            if (other.transform.CompareTag("Enemy"))
+            {
+                EnemyAI enemy = other.transform.GetComponent<EnemyAI>();
+                enemy.ApplyDamage(Damage);
+                Debug.Log("ENemyTouched");
+                Active = false;
+            }
+        }
+    }
 }
