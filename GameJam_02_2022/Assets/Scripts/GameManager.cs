@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
     public int m_CurrentEnergyCollected = 0;
     public int m_MaxAttackEnemySimultaneous = 2;
 
-    [HideInInspector]
     public int CurrentNbEnemyWhyAttack;
 
     [Header("Player Values")]
