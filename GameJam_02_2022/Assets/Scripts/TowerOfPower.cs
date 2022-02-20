@@ -13,20 +13,32 @@ public class TowerOfPower : MonoBehaviour
     }
     public E_State m_CurrentState;
 
-    public GameObject[] m_PartsOfTower;
+    public Animator m_Animator;
 
     public void UpdateTower()
     {
-        for (int i = 0; i < m_PartsOfTower.Length; i++)
+        switch (GameManager.s_Instance.m_CurrentLevel)
         {
-            if(i <= GameManager.s_Instance.m_CurrentLevel)
-            {
-                m_PartsOfTower[i].SetActive(true);
-            }
-            else
-            {
-                m_PartsOfTower[i].SetActive(false);
-            }
+            case 0:
+
+                break;
+            case 1:
+                m_Animator.SetTrigger("TourSpawn1");
+                break;
+            case 2:
+                m_Animator.SetTrigger("TourSpawn2");
+                break;
+            case 3:
+                m_Animator.SetTrigger("TourSpawn3");
+                break;
+            case 4:
+                m_Animator.SetTrigger("TourSpawn4");
+                break;
+            case 5:
+                m_Animator.SetTrigger("TourSpawn5");
+                break;
+            default:
+                break;
         }
     }
 }

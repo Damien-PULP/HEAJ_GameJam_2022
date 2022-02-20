@@ -75,16 +75,21 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Float0: 0.536
+    - _Float0: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
+    - _NoiseScale: 31.64
     - _OcclusionStrength: 1
-    - _OpacityBoost: 2.76
+    - _OpacityBoost: 2.36
     - _Parallax: 0.02
+    - _Power: 0.27
+    - _PowerDisplacement: 0.05
     - _Rows: 8
+    - _Scale: 2.36
+    - _ScaleDIsplacement: 0.05
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
