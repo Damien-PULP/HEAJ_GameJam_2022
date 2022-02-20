@@ -142,10 +142,10 @@ public class ParasiteAI : MonoBehaviour
     }
     private void UpdateShader()
     {
-        m_ParasiteMaterial.SetVector("_CenterPosition", m_CenterWorld);
-        m_TerrainMaterial.SetVector("_CenterPositionWorld", m_CenterWorld);
-        m_ParasiteMaterial.SetFloat("_Radius", CurrentRadius);
-        m_TerrainMaterial.SetFloat("_RadiusInfection", CurrentRadius);
+        Shader.SetGlobalFloat("Radius", CurrentRadius);
+        Shader.SetGlobalFloat("RadiusInfection", CurrentRadius);
+        Shader.SetGlobalVector("CenterPosition", m_CenterWorld);
+        Shader.SetGlobalVector("CenterPositionWorld", m_CenterWorld);
     }
 
     public void RemoveAEnemy(GameObject enemy)
