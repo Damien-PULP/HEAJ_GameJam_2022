@@ -17,6 +17,7 @@ public class EnemyAI : MonoBehaviour
         Dead,
     }
     public E_State m_CurrentState;
+    public GameObject m_Collectable;
 
     [Header("Enemy Attributes")]
     public float m_Health = 100f;
@@ -26,6 +27,7 @@ public class EnemyAI : MonoBehaviour
 
     [Header("Agent Settings")]
     public float m_Speed = 13f;
+    public Collider m_Collider;
 
     [Header("Distance Settings")]
     public float m_DistanceViewPlayer = 50f;
@@ -34,16 +36,20 @@ public class EnemyAI : MonoBehaviour
 
     [Header("Timing Settings")]
     public float m_TimeBetweenAttack = 3f;
+    public float m_DestroyDead = 4f;
     [Space]
     public LayerMask m_IgnoreLayerAttack;
 
     [Header("Animation")]
     public Animator m_Animator;
     public string m_RunNameParams;
-
+    public string m_Attack1NameParams = "Attack1";
+    public string m_Attack2NameParams = "Attack2";
+    public string m_ImpactedNameParams = "Impacted";
+    public string m_DeadNameParams = "Dead";
     private bool isRunAnim;
-
     private bool IsAttackNow;
+
 
     private Transform PlayerTarget;
     private Transform TowerTarget;
@@ -117,7 +123,6 @@ public class EnemyAI : MonoBehaviour
     }
     private void EnterState()
     {
-        
         switch (m_CurrentState)
         {
             case E_State.Spawn:
@@ -127,6 +132,9 @@ public class EnemyAI : MonoBehaviour
                 isRunAnim = true;
                 break;
             case E_State.Impact:
+                m_Animator.SetTrigger(m_ImpactedNameParams);
+                Debug.Log("impacted");
+                SwitchState(E_State.Chase);
                 isRunAnim = false;
                 break;
             case E_State.Attack:
@@ -152,7 +160,10 @@ public class EnemyAI : MonoBehaviour
     private void Dead()
     {
         ParasiteAI.s_Instance.RemoveAEnemy(gameObject);
-        Destroy(gameObject);
+        m_Animator.SetTrigger(m_DeadNameParams);
+        Instantiate(m_Collectable, transform.position, transform.rotation);
+        m_Collider.enabled = false;
+        Destroy(gameObject, m_DestroyDead);
     }
 
     private void ExitState()
@@ -200,6 +211,7 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
+            SwitchState(E_State.Idle);
             if (DistanceToTarget <= m_DistanceToWait)
             {
                 SwitchState(E_State.Idle);
@@ -222,6 +234,17 @@ public class EnemyAI : MonoBehaviour
         {
             IsAttackNow = true;
             Timer = 0f;
+
+            int animAttack = UnityEngine.Random.Range(0, 2);
+            if(animAttack == 0)
+            {
+                m_Animator.SetTrigger(m_Attack1NameParams);
+            }
+            else
+            {
+                m_Animator.SetTrigger(m_Attack2NameParams);
+            }
+
 
             RaycastHit hit;
             if(Physics.Raycast(m_AnchorAttack.position, transform.forward, out hit, m_DistanceRangeAttack, ~m_IgnoreLayerAttack))
@@ -246,13 +269,17 @@ public class EnemyAI : MonoBehaviour
         m_Health -= damage;
         if(m_Health <= 0)
         {
-            SwitchState(E_State.Dead);
+            if(m_CurrentState != E_State.Dead) SwitchState(E_State.Dead);
+        }
+        else
+        {
+            SwitchState(E_State.Impact);
         }
     }
 
     private void UpdateAnimation()
     {
         Debug.Log("Update Run");
-       // m_Animator.SetBool(m_RunNameParams, true);
+        m_Animator.SetBool(m_RunNameParams, isRunAnim);
     }
 }
