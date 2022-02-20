@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _AlphaTrail:
-        m_Texture: {fileID: 2800000, guid: 6bce0bc1afd7b69408ab33eddacaacbc, type: 3}
+        m_Texture: {fileID: 2800000, guid: a6e56e7ab3f9ab849a8bd961b68750c9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -68,30 +68,37 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _Float0: 0.28
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _LenghtFadeEnd: 0.48
-    - _LenghtFadeStart: 0.02
+    - _LenghtFadeEnd: 4.04
+    - _LenghtFadeLeft: 0.49
+    - _LenghtFadeRight: 0.68
+    - _LenghtFadeStart: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _PowerTrail: 18.4
-    - _ScaleDeformation: 1.95
+    - _PowerTrail: 3.8
+    - _ScaleDeformation: -0.02
     - _SmoothnessTextureChannel: 0
     - _SmoothstepMin: 0
     - _SpecularHighlights: 1
     - _SpeedTrail: 2.7
     - _SrcBlend: 1
-    - _StrenghtDeformation: 0.07
+    - _StrenghtDeformation: 0.515
     - _UVSec: 0
     - _ZWrite: 1
     - __dirty: 0
     - _smoothstepMax: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorTrail: {r: 0.086908154, g: 0.65151566, b: 0.8773585, a: 1}
+    - _ColorTrail: {r: 4.7686276, g: 24.345098, b: 47.937256, a: 0.4745098}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Tilling: {r: 0.5, g: 0.47, b: 0, a: 0}
+    - _OffsetEnd: {r: -0.29, g: 0, b: 0, a: 0}
+    - _OffsetLeft: {r: 0, g: 0.02, b: 0, a: 0}
+    - _OffsetRight: {r: 0, g: 0.07, b: 0, a: 0}
+    - _OffsetStart: {r: 0, g: 0, b: 0, a: 0}
+    - _Tilling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
