@@ -59,16 +59,24 @@ Material:
         m_Texture: {fileID: 2800000, guid: 0621e8efdb88aa549853a96496ea3adb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture1:
+        m_Texture: {fileID: 2800000, guid: 8f198031d76e1e845a09f3efc88906a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DisplacementRange: 0.414
+    - _DisplacementRange: 0.571
     - _DstBlend: 0
     - _Float0: 2.08
     - _Float1: 0.64
-    - _Float2: 0.5
-    - _Float3: 0.1
+    - _Float2: 0.466
+    - _Float3: 0.19
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -77,12 +85,19 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _Power: 4.7
-    - _Power1: 4.7
-    - _Power2: 4.7
+    - _Power1: 4.16
+    - _Power2: 3.15
+    - _Power3: 1.91
     - _Scale: 14.21
-    - _Scale1: 14.21
-    - _Scale2: -6.7
+    - _Scale1: 4.64
+    - _Scale2: 2.13
+    - _Scale3: 1.65
+    - _ScalePerlin1: 1.7
+    - _ScalePerlin2: 37.5
+    - _ScalePerlin3: 4.26
     - _SmoothnessTextureChannel: 0
+    - _SmoothstepMax: 2.84
+    - _SmoothstepMin: -1.31
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
@@ -90,9 +105,10 @@ Material:
     - __dirty: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color0: {r: 1.2930942, g: 6.675163, b: 4.9484577, a: 0}
-    - _Color1: {r: 0.13683695, g: 0.58773094, b: 0.7075472, a: 0}
-    - _Color2: {r: 0.23424439, g: 1.0090528, b: 0.95499635, a: 0}
-    - _Color3: {r: 0.6666667, g: 0.9411765, b: 1.5137255, a: 0}
+    - _Color0: {r: 0.9716122, g: 4.438811, b: 5.885195, a: 0}
+    - _Color1: {r: 1.5720313, g: 2.2159233, b: 4.114452, a: 0}
+    - _Color2: {r: 7.8339806, g: 10.972123, b: 28.149218, a: 0}
+    - _Color3: {r: 0.4105377, g: 1.355724, b: 1.5824361, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _NoiseTIlling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
