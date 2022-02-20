@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: bloodmat
-  m_Shader: {fileID: 4800000, guid: 52ff75c54e8202642bff52115a15b3a2, type: 3}
+  m_Name: Soul2Mat
+  m_Shader: {fileID: 4800000, guid: 0886b797daac38c45b122725af68e416, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
@@ -19,6 +19,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Alpha:
+        m_Texture: {fileID: 2800000, guid: a4fe9ba85fd7ebc4f80a78b34b784d0e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -55,8 +59,8 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Texture0:
-        m_Texture: {fileID: 2800000, guid: 0bb31f5d74dbd734e87a5f38b3301f6a, type: 3}
+    - _Render:
+        m_Texture: {fileID: 2800000, guid: 02fc89449a8ed164796a495cbb307d58, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -64,18 +68,25 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _AnimationSpeed: 1.01
+    - _AutoAnimate: 1
     - _BumpScale: 1
+    - _Columns: 8
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _Float0: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OpacityIntensity: 4
+    - _OpacityBoost: 1
     - _Parallax: 0.02
+    - _Power: 0.33
+    - _Rows: 8
+    - _Scale: 3.21
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -85,4 +96,5 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Vector0: {r: 0.63, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
