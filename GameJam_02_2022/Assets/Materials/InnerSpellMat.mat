@@ -65,8 +65,8 @@ Material:
     - _DetailNormalMapScale: 1
     - _DisplacementRange: 0.414
     - _DstBlend: 0
-    - _Float0: 0.86
-    - _Float1: -0.51
+    - _Float0: 2.08
+    - _Float1: 0.64
     - _Float2: 0.5
     - _Float3: 0.1
     - _GlossMapScale: 1
@@ -76,6 +76,12 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _Power: 4.7
+    - _Power1: 4.7
+    - _Power2: 4.7
+    - _Scale: 14.21
+    - _Scale1: 14.21
+    - _Scale2: -6.7
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -84,6 +90,9 @@ Material:
     - __dirty: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color0: {r: 0.6148096, g: 0.7499109, b: 0.8301887, a: 0}
+    - _Color0: {r: 1.2930942, g: 6.675163, b: 4.9484577, a: 0}
+    - _Color1: {r: 0.13683695, g: 0.58773094, b: 0.7075472, a: 0}
+    - _Color2: {r: 0.23424439, g: 1.0090528, b: 0.95499635, a: 0}
+    - _Color3: {r: 0.6666667, g: 0.9411765, b: 1.5137255, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
