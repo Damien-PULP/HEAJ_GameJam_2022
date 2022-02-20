@@ -13,7 +13,14 @@ public class CanvasManager : MonoBehaviour
     public Image m_AdvencementLevelBar;
     public Text m_EnergyPickupText;
     public GameObject[] m_LevelTowerImage;
+    public GameObject m_WinPanel;
+    public GameObject m_GameOverPanel;
 
+    private void Start()
+    {
+        m_GameOverPanel.SetActive(false);
+        m_WinPanel.SetActive(false);
+    }
     public void ActiveOrDisableMessageDropEnergy(bool active)
     {
         m_MessageDropEnergy.SetActive(active);
@@ -41,12 +48,20 @@ public class CanvasManager : MonoBehaviour
             }
         }
     }
-    public void UpdateEnergyPickup(int energy)
+    public void UpdateEnergyPickup(int energy, int max)
     {
-        m_EnergyPickupText.text = string.Concat(energy);
+        m_EnergyPickupText.text = energy + " / " + max;
     }
     public void UpdateAdvencementLevel(float percent)
     {
         m_AdvencementLevelBar.fillAmount = percent;
+    }
+    public void ShowGameOver()
+    {
+        m_GameOverPanel.SetActive(true);
+    }
+    public void ShowWin()
+    {
+        m_WinPanel.SetActive(true);
     }
 }

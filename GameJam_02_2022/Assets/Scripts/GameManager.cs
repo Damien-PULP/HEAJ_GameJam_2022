@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -42,7 +43,7 @@ public class GameManager : MonoBehaviour
     public float m_DistanceToTowerFactor = 1f;
     public float m_MinDistanceToRegenerateMana = 100f;
 
-
+    public float m_RestartTime = 3f;
     [Header("Component Required")]
     public TowerOfPower m_TowerOfPower;
     public Transform m_TowerTransform;
@@ -57,6 +58,8 @@ public class GameManager : MonoBehaviour
 
     private bool IsPossibleToDropEnergy;
     private bool IsPlayerInZone;
+
+    private float Timer;
 
 
     private void Awake()
@@ -101,8 +104,10 @@ public class GameManager : MonoBehaviour
             case E_State.UpgradeLevel:
                 break;
             case E_State.EndGame:
+                RestartGame();
                 break;
             case E_State.GameOver:
+                RestartGame();
                 break;
             default:
                 break;
@@ -116,7 +121,7 @@ public class GameManager : MonoBehaviour
                 m_TowerOfPower.UpdateTower();
                 m_CanvasManager.UpdateLevelTower(m_CurrentLevel);
                 m_CanvasManager.UpdateAdvencementLevel(0f);
-                m_CanvasManager.UpdateEnergyPickup(m_CurrentEnergyCollected);
+                m_CanvasManager.UpdateEnergyPickup(m_CurrentEnergyCollected, m_MaxEnergyToTransport);
                 SwitchState(E_State.InGame);
                 break;
             case E_State.InGame:
@@ -128,11 +133,12 @@ public class GameManager : MonoBehaviour
                 SwitchState(E_State.InGame);
                 break;
             case E_State.EndGame:
-                m_TowerOfPower.UpdateTower();
+                m_TowerOfPower.UpdateTower();    
                 // END GAME WIN
                 break;
             case E_State.GameOver:
                 m_PlayerMovement.SwitchState(PlayerMovement.E_State.Dead);
+                m_CanvasManager.ShowGameOver();
                 break;
             default:
                 break;
@@ -186,7 +192,7 @@ public class GameManager : MonoBehaviour
         if( (m_CurrentEnergyCollected + point) <= m_MaxEnergyToTransport)
         {
             m_CurrentEnergyCollected += point;
-            m_CanvasManager.UpdateEnergyPickup(m_CurrentEnergyCollected);
+            m_CanvasManager.UpdateEnergyPickup(m_CurrentEnergyCollected, m_MaxEnergyToTransport);
             return true;
         }
         else
@@ -213,7 +219,7 @@ public class GameManager : MonoBehaviour
         }
         float percentLevel = Mathf.Clamp01(m_CurrentAdvencementLevel / m_CurrentStepAdvencementNextLevel);
         m_CanvasManager.UpdateAdvencementLevel(percentLevel);
-        m_CanvasManager.UpdateEnergyPickup(m_CurrentEnergyCollected);
+        m_CanvasManager.UpdateEnergyPickup(m_CurrentEnergyCollected, m_MaxEnergyToTransport);
     }
     private void CheckDistanceToDropEnergy()
     {
@@ -330,5 +336,15 @@ public class GameManager : MonoBehaviour
         {
             return false;
         }
+    }
+    public void RestartGame()
+    {
+        Timer += Time.deltaTime;
+
+        if(Timer >= m_RestartTime)
+        {
+            SceneManager.LoadScene(0);
+        }
+        
     }
 }
