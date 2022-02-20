@@ -195,6 +195,11 @@ public class GameManager : MonoBehaviour
             return false;
         }
     }
+    [ContextMenu("ForceAddLevel")]
+    public void ForceAddLevel()
+    {
+        UpgradeLevel();
+    }
     public void AddEnergyLevel()
     {
         if (!IsPossibleToDropEnergy) return;
