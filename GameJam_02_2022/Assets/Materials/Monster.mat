@@ -142,9 +142,10 @@ Material:
     - _Keyword0: 1
     - _Metallic: 0
     - _Mode: 0
-    - _NormalIntensity: 0.5
+    - _NormalIntensity: 0.2
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _RoughnessIntensity: 0.55
     - _SmoothnessIntensity: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
