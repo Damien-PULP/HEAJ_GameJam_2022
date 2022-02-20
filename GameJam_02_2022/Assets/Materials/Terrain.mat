@@ -171,7 +171,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _Radius1: 126.06
-    - _RadiusInfection: 30.464508
+    - _RadiusInfection: 78.310104
     - _ScaleBorderNoise: 420.78
     - _ScaleNormalDirt: 0.88
     - _ScaleNormalGrass: 0.66

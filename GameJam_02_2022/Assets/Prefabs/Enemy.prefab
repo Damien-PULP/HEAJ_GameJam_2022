@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1790071093}
   m_Layer: 6
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,17 +44,17 @@ NavMeshAgent:
   m_GameObject: {fileID: 310153850189045414}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.7
+  m_Radius: 0.93
   m_Speed: 13
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 3.5
+  m_StoppingDistance: 5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1.4
-  m_BaseOffset: 0.89
+  m_Height: 1.79
+  m_BaseOffset: 1.24
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &2342733958382740332
@@ -71,17 +71,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CurrentState: 0
   m_Health: 100
-  m_DistanceRangeAttack: 2
-  m_Damage: 25
+  m_DistanceRangeAttack: 2.5
+  m_Damage: 15
   m_AnchorAttack: {fileID: 3626807939457964336}
-  m_Speed: 13
+  m_Speed: 11
   m_DistanceViewPlayer: 100
-  m_DistanceAttack: 3
-  m_DistanceToWait: 10
+  m_DistanceAttack: 5
+  m_DistanceToWait: 15
   m_TimeBetweenAttack: 3
   m_IgnoreLayerAttack:
     serializedVersion: 2
     m_Bits: 64
+  m_Animator: {fileID: 0}
+  m_RunNameParams: 
 --- !u!136 &1790071093
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -92,10 +94,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.46
+  m_Radius: 1.1
+  m_Height: 2.06
   m_Direction: 1
-  m_Center: {x: 0, y: -0.15, z: 0}
+  m_Center: {x: 0, y: -0.39, z: 0}
 --- !u!1 &3039606264878012343
 GameObject:
   m_ObjectHideFlags: 0

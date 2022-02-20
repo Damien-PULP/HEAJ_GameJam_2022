@@ -37,6 +37,12 @@ public class EnemyAI : MonoBehaviour
     [Space]
     public LayerMask m_IgnoreLayerAttack;
 
+    [Header("Animation")]
+    public Animator m_Animator;
+    public string m_RunNameParams;
+
+    private bool isRunAnim;
+
     private bool IsAttackNow;
 
     private Transform PlayerTarget;
@@ -80,6 +86,8 @@ public class EnemyAI : MonoBehaviour
             CurrentTarget = TowerTarget;
         }
 
+        UpdateAnimation();
+
         DistanceToTarget = Vector3.Distance(CurrentTarget.position, transform.position);
         CanBeAttack = GameManager.s_Instance.CheckIfCanBeAttack();
 
@@ -109,29 +117,36 @@ public class EnemyAI : MonoBehaviour
     }
     private void EnterState()
     {
+        
         switch (m_CurrentState)
         {
             case E_State.Spawn:
                 SwitchState(E_State.Chase);
                 break;
             case E_State.Chase:
+                isRunAnim = true;
                 break;
             case E_State.Impact:
+                isRunAnim = false;
                 break;
             case E_State.Attack:
+                isRunAnim = false;
                 CurrentPos = CurrentTarget.position;
                 NavAgent.SetDestination(CurrentPos);
                 GameManager.s_Instance.IndicEnemyStartAttack();
                 break;
             case E_State.Idle:
+                isRunAnim = false;
                 break;
             case E_State.Dead:
+                isRunAnim = false;
                 Debug.Log("EnemyDead");
                 Dead();
                 break;
             default:
                 break;
         }
+        UpdateAnimation();
     }
 
     private void Dead()
@@ -233,5 +248,11 @@ public class EnemyAI : MonoBehaviour
         {
             SwitchState(E_State.Dead);
         }
+    }
+
+    private void UpdateAnimation()
+    {
+        Debug.Log("Update Run");
+       // m_Animator.SetBool(m_RunNameParams, true);
     }
 }
