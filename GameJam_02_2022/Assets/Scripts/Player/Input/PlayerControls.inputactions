@@ -306,6 +306,33 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "OptionsActions",
+            "id": "8c043ca8-ac1b-4908-b198-8b4e19a619fa",
+            "actions": [
+                {
+                    "name": "CameraAxe",
+                    "type": "Button",
+                    "id": "e9e9efbb-2836-406a-8975-37475a046f2e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ce4974a9-2059-40a9-ab5c-e8aed311c468",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CameraAxe",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AttackSystem : MonoBehaviour
 {
+    public LayerMask m_EnemyMask;
     [Header("Simple Attack")]
     public Transform m_SimpleAttackAnchor;
     public float m_MaxDistanceSimpleAttack = 2f;
@@ -12,6 +13,8 @@ public class AttackSystem : MonoBehaviour
     public float m_TimeBeforeDamage = 0.5f;
     public float m_TimeBetweenSimpleAttack = 1.5f;
     public GameObject m_TrailRenderStaff;
+    public float m_MaxAngleAutoAim = 45f;
+    public float m_AutoAimSimpleImpactStrenght = 3f;
 
     private float Timer;
     private bool IsSimpleAttack;
@@ -33,6 +36,8 @@ public class AttackSystem : MonoBehaviour
     private bool IsSpeelAttack;
     private bool AlredyFire;
     private Vector3 PositionTargetFire;
+    private Vector3 LookDirToTarget = new Vector3();
+    private Transform TargetAimed;
 
     [Header("Required Component")]
     public PlayerMovement m_PlayerMovement;
@@ -44,10 +49,28 @@ public class AttackSystem : MonoBehaviour
         m_StaffEnd.ActiveOrDisableStaff(false);
         m_TrailRenderStaff.SetActive(false);
     }
+    private void FixedUpdate()
+    {
+        if (TargetAimed && IsSimpleAttack)
+        {
+            Vector3 dirToTarget = TargetAimed.transform.position - transform.position;
+            dirToTarget.Normalize();
+            dirToTarget.y = 0f;
+            Quaternion targetRotation = Quaternion.LookRotation(dirToTarget);
+            Quaternion lookAt = Quaternion.RotateTowards(transform.rotation, targetRotation, m_AutoAimSimpleImpactStrenght * Time.fixedDeltaTime);
+            transform.rotation = lookAt;
+
+            //LookDirToTarget = Vector3.Slerp(LookDirToTarget, dirToTarget, m_AutoAimSimpleImpactStrenght * Time.fixedDeltaTime);
+            //LookDirToTarget.y = transform.position.y;
+            //transform.rotation = Quaternion.Loo(transform.rotation, dirToTarget, m_AutoAimSimpleImpactStrenght * Time.deltaTime);
+            //transform.LookAt(LookDirToTarget);
+        }
+    }
     private void Update()
     {
         if(IsSimpleAttack == true)
         {
+
             m_TrailRenderStaff.SetActive(true);
             Timer += Time.deltaTime;
             if(Timer >= m_TimeBeforeDamage && !DamageApply)
@@ -83,12 +106,12 @@ public class AttackSystem : MonoBehaviour
             if (Timer >= m_TimeBeforeFireSpell &&!AlredyFire)
             {
                 GameObject bulletInstance = (Instantiate(m_SpellBullet, m_AnchorSpellFire.position, m_SpellBullet.transform.rotation));
-                /*Rigidbody rb = bulletInstance.GetComponent<Rigidbody>();
+                Rigidbody rb = bulletInstance.GetComponent<Rigidbody>();
                 Bullet bullet = bulletInstance.GetComponent<Bullet>();
                 bullet.SetDamage(m_DamageSpell);
-                rb.AddForce(transform.forward * m_SpeedBullet, ForceMode.Impulse);*/
-                BulletSemiHoming bulletHoming = bulletInstance.GetComponent<BulletSemiHoming>();
-                bulletHoming.Shoot(PositionTargetFire, m_SpeedBullet, m_ForceRedirection, m_DistanceToStopRedirection, m_DamageSpell);
+                rb.AddForce(transform.forward * m_SpeedBullet, ForceMode.Impulse);
+               // BulletSemiHoming bulletHoming = bulletInstance.GetComponent<BulletSemiHoming>();
+               // bulletHoming.Shoot(PositionTargetFire, m_SpeedBullet, m_ForceRedirection, m_DistanceToStopRedirection, m_DamageSpell);
 
                 AlredyFire = true;
             }
@@ -101,18 +124,58 @@ public class AttackSystem : MonoBehaviour
         }
         Aim();
     }
-    public void SimpleAttack()
+    public void AutoAimCloseEnemy()
     {
+        Collider[] enemyClose = Physics.OverlapSphere(m_SimpleAttackAnchor.position, m_RadiusSimpleAttack, m_EnemyMask);
+        TargetAimed = null;
+        //LookDirToTarget = Vector3.zero;
+
+        if (enemyClose.Length > 0)
+        {
+            float minAngleTarget = 360f;
+
+            for (int i = 0; i < enemyClose.Length; i++)
+            {
+                Transform target = enemyClose[i].transform;
+                Vector3 dirToTarget = (target.position - transform.position).normalized;
+                float angle = Vector3.Angle(transform.forward, dirToTarget);
+                Debug.Log("angle enemy to player : " + angle);
+                if (Mathf.Abs(angle) < m_MaxAngleAutoAim && angle < minAngleTarget)
+                {
+                    TargetAimed = target;
+                    minAngleTarget = angle;
+                }
+            }
+            if (TargetAimed)
+            {
+                LookDirToTarget = transform.position.normalized;
+                LookDirToTarget.y = 0f;
+            }
+        }
+    }
+    public void SimpleAttack()
+    {   
         if (IsSpeelAttack) return;
-        if(!IsSimpleAttack) m_PlayerMovement.SimpleAttack();
+        if (!IsSimpleAttack)
+        {
+            m_PlayerMovement.SimpleAttack();
+            AutoAimCloseEnemy();
+            Timer = 0f;
+        }
         IsSimpleAttack = true;
+
     }
 
     public void SpellAttack()
     {
         if (IsSimpleAttack) return;
-        if(!IsSpeelAttack) m_PlayerMovement.SpeelAttack();
+        if (!IsSpeelAttack)
+        {
+            m_PlayerMovement.SpeelAttack();
+            Timer = 0f;
+        }
         IsSpeelAttack = true;
+
     }
 
     private void Aim()

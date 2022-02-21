@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StaffEnd : MonoBehaviour
 {
+    public Collider m_Collider;
     private float Damage;
     private bool Active;
 
@@ -14,6 +15,7 @@ public class StaffEnd : MonoBehaviour
     public void ActiveOrDisableStaff(bool active)
     {
         Active = active;
+        m_Collider.enabled = active;
     }
 
     private void OnTriggerEnter(Collider other)

@@ -24,7 +24,7 @@ public class CameraTPSManager : MonoBehaviour
     public float m_MinCollisionOffset = 0.2f;
     public float m_InterpolationAvoidCollision = 0.2f;
     public LayerMask m_LayerCollision;
-
+    public bool m_InverseYAxeCam;
     private float DefaultZPosition;
     private float HorAngle;
     private float VertAngle;
@@ -55,7 +55,15 @@ public class CameraTPSManager : MonoBehaviour
     private void RotateCamera()
     {
         HorAngle += m_InputManager.GetInputCamera().x * m_RotationSpeed * m_HorizontalSensivity;
-        VertAngle += m_InputManager.GetInputCamera().y * m_RotationSpeed * m_VerticalSensivity;
+        if (m_InverseYAxeCam)
+        {
+            VertAngle -= m_InputManager.GetInputCamera().y * m_RotationSpeed * m_VerticalSensivity;
+        }
+        else
+        {
+            VertAngle += m_InputManager.GetInputCamera().y * m_RotationSpeed * m_VerticalSensivity;
+        }
+
         VertAngle = Mathf.Clamp(VertAngle, m_MinVertAngle, m_MaxVertAngle);
         //HorAngle = Mathf.Clamp(HorAngle, m_LeftAngleHorizontal, m_RightAngleHorizontal);
 

@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     public float m_MinDistanceToDropEnergyCollected = 2f;
     public int m_MaxEnergyToTransport = 500;
     public int m_CurrentEnergyCollected = 0;
+    public float m_InterpolationStrenghtVisualEnergyTransported = 1f;
+    [Space]
     public int m_MaxAttackEnemySimultaneous = 2;
 
     public int CurrentNbEnemyWhyAttack;
@@ -52,12 +54,16 @@ public class GameManager : MonoBehaviour
     public PlayerMovement m_PlayerMovement;
     public ParasiteAI m_ParasiteAI;
     public CanvasManager m_CanvasManager;
+    public Material m_MaterialPlayer;
 
     [HideInInspector]
     public float CurrentTimerParty;
 
     private bool IsPossibleToDropEnergy;
     private bool IsPlayerInZone;
+
+    private string NameParamsEmissionMaterialPlayer = "_PercentEmission";
+    private float PercentEnergyCollected;
 
     private float Timer;
 
@@ -84,11 +90,13 @@ public class GameManager : MonoBehaviour
     {
         CurrentTimerParty += Time.deltaTime;
         UpdateState();
+        UpdateShaderEnergyCollected();
     }
 
     #region State Methods
     private void UpdateState()
     {
+
         switch (m_CurrentState)
         {
             case E_State.Start:
@@ -98,6 +106,7 @@ public class GameManager : MonoBehaviour
                 RegenerateMana();
                 CheckDistanceToDropEnergy();
                 CheckIsPlayerInZone();
+                
                 break;
             case E_State.Paused:
                 break;
@@ -213,7 +222,8 @@ public class GameManager : MonoBehaviour
 
         m_CurrentAdvencementLevel += m_CurrentEnergyCollected;
         m_CurrentEnergyCollected = 0;
-        if(m_CurrentAdvencementLevel >= m_CurrentStepAdvencementNextLevel)
+        PercentEnergyCollected = 0;
+        if (m_CurrentAdvencementLevel >= m_CurrentStepAdvencementNextLevel)
         {
             m_CurrentAdvencementLevel -= m_CurrentStepAdvencementNextLevel;
             UpgradeLevel();
@@ -263,7 +273,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            m_PlayerMovement.SwitchState(PlayerMovement.E_State.Impacted);
+            if(m_PlayerMovement.m_CurrentState != PlayerMovement.E_State.Impacted) m_PlayerMovement.SwitchState(PlayerMovement.E_State.Impacted);
         }
         float percentHealth = Mathf.Clamp01(m_CurrentHealth / m_MaxHealth);
         m_CanvasManager.UpdateHealth(percentHealth);
@@ -287,7 +297,10 @@ public class GameManager : MonoBehaviour
         if(m_CurrentHealth < m_MaxHealth)
         {
             m_CurrentHealth += Time.deltaTime * m_FactorRegenerationHealth;
-        }else if(m_CurrentHealth > m_MaxHealth)
+            float percentHealth = Mathf.Clamp01(m_CurrentHealth / m_MaxHealth);
+            m_CanvasManager.UpdateHealth(percentHealth);
+        }
+        else if(m_CurrentHealth > m_MaxHealth)
         {
             m_CurrentHealth = m_MaxHealth;
         }
@@ -347,5 +360,11 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(1);
         }
         
+    }
+    private void UpdateShaderEnergyCollected()
+    {
+        float ratioEnergy = (float) m_CurrentEnergyCollected / (float)m_MaxEnergyToTransport;
+        PercentEnergyCollected = Mathf.Lerp(PercentEnergyCollected, ratioEnergy, Time.deltaTime * m_InterpolationStrenghtVisualEnergyTransported);
+        m_MaterialPlayer.SetFloat(NameParamsEmissionMaterialPlayer, PercentEnergyCollected);
     }
 }

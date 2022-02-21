@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public float m_SprintSpeed = 9f;
     public float m_RotationSpeed = 15f;
     public float m_HorizontalFactorSpeed = 0.5f;
+    public float m_TimeImpacted = 0.8f;
 
     [Header("Required Components")]
     public InputManager m_InputManager;
@@ -32,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     private float HorizontalInput;
     private float MoveValue;
     private bool IsSprinting;
+    private float Timer;
 
     private void Awake()
     {
@@ -65,6 +67,11 @@ public class PlayerMovement : MonoBehaviour
                 UpdateMoveAnimation(0, MoveValue, IsSprinting);
                 break;
             case E_State.Impacted:
+                Timer += Time.deltaTime;
+                if(Timer >= m_TimeImpacted)
+                {
+                    SwitchState(E_State.InGame);
+                }
                 break;
             case E_State.Dead:
                 break;
@@ -165,13 +172,13 @@ public class PlayerMovement : MonoBehaviour
     }
     private void EnterState()
     {
+        Timer = 0f;
         switch (m_CurrentState)
         {
             case E_State.InGame:
                 break;
             case E_State.Impacted:
                 if (m_AnimatorController) m_AnimatorController.Impacted();
-                SwitchState(E_State.InGame);
                 break;
             case E_State.Dead:
                 Dead();

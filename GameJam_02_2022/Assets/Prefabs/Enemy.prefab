@@ -49,8 +49,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.93
-  m_Speed: 11
-  m_Acceleration: 5
+  m_Speed: 8
+  m_Acceleration: 3.5
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 2.8
@@ -78,21 +78,21 @@ MonoBehaviour:
   m_DistanceRangeAttack: 2.8
   m_Damage: 15
   m_AnchorAttack: {fileID: 3626807939457964336}
-  m_Speed: 11
+  m_Speed: 8
   m_SpeedLookRotation: 2
   m_Collider: {fileID: 1790071093}
   m_DistanceViewPlayer: 100
   m_DistanceAttack: 2.5
   m_DistanceToWait: 15
   m_StartTimeToAttack: 0.35
-  m_TimeBetweenAttack: 1.2
+  m_TimeBetweenAttack: 2
   m_TimeImpacted: 1.5
   m_DestroyDead: 4
   m_IgnoreLayerAttack:
     serializedVersion: 2
     m_Bits: 64
   m_AnimationController: {fileID: 2760339185455015451}
-  m_DropCollectableDeath: {fileID: 8945917872566171089, guid: d7dd283322afd2a4aa954bd993d3d766, type: 3}
+  m_DropCollectableDeath: {fileID: 3757267513967209936, guid: 61572f6dd4a5eab49bf8eedc870f2db1, type: 3}
 --- !u!136 &1790071093
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Sounds:
   - m_Name: Idle
     m_ParentSound: {fileID: 310153850189045414}
-    m_AudioClip: {fileID: 8300000, guid: a53852baf90eb404b83ff26a76f0090a, type: 3}
+    m_AudioClip: {fileID: 8300000, guid: 94837acdc104d4a4ebf83bfc52638ebf, type: 3}
     m_Loop: 1
     m_PlayOnAwake: 0
     m_Volume: 0.885
@@ -156,7 +156,7 @@ MonoBehaviour:
     m_AudioClip: {fileID: 8300000, guid: 9b394bdb8ba0de140956d8e2c15353a1, type: 3}
     m_Loop: 1
     m_PlayOnAwake: 0
-    m_Volume: 1
+    m_Volume: 0.75
     m_Pitch: 1
     m_SpacialBlend2DTo3D: 1
     m_MinDistance: 3.5

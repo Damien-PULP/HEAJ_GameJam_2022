@@ -6,12 +6,14 @@ public class InputManager : MonoBehaviour
 {
     public static PlayerControls s_PlayerControls;
     public PlayerMovement m_PlayerMovement;
+    public CameraTPSManager m_CameraManager;
     public AttackSystem m_AttackSystem;
 
     private Vector2 InputMovement;
     private Vector2 InputCamera;
 
     private bool B_Input;
+    private bool AxeCam;
 
     private void Awake()
     {
@@ -27,6 +29,7 @@ public class InputManager : MonoBehaviour
             s_PlayerControls.PlayerMouvement.Camera.performed += i => InputCamera = i.ReadValue<Vector2>();
             s_PlayerControls.PlayerActions.B.performed += i => B_Input = true;
             s_PlayerControls.PlayerActions.B.canceled += i => B_Input = false;
+            s_PlayerControls.OptionsActions.CameraAxe.performed += i => UpdateAxeCam();
             s_PlayerControls.PlayerActions.Drop.performed += i => PickUpInput();
             s_PlayerControls.PlayerActions.Fire1.performed += i => Fire1();
             s_PlayerControls.PlayerActions.Fire2.performed += i => Fire2();
@@ -61,6 +64,11 @@ public class InputManager : MonoBehaviour
     public bool IsInputSprint()
     {
         return B_Input;
+    }
+    private void UpdateAxeCam()
+    {
+        AxeCam = !AxeCam;
+        m_CameraManager.m_InverseYAxeCam = AxeCam;
     }
 
     private void OnDisable()

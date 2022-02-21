@@ -319,6 +319,33 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""OptionsActions"",
+            ""id"": ""8c043ca8-ac1b-4908-b198-8b4e19a619fa"",
+            ""actions"": [
+                {
+                    ""name"": ""CameraAxe"",
+                    ""type"": ""Button"",
+                    ""id"": ""e9e9efbb-2836-406a-8975-37475a046f2e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""ce4974a9-2059-40a9-ab5c-e8aed311c468"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraAxe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -333,6 +360,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_PlayerActions_Drop = m_PlayerActions.FindAction("Drop", throwIfNotFound: true);
         m_PlayerActions_Fire1 = m_PlayerActions.FindAction("Fire1", throwIfNotFound: true);
         m_PlayerActions_Fire2 = m_PlayerActions.FindAction("Fire2", throwIfNotFound: true);
+        // OptionsActions
+        m_OptionsActions = asset.FindActionMap("OptionsActions", throwIfNotFound: true);
+        m_OptionsActions_CameraAxe = m_OptionsActions.FindAction("CameraAxe", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -476,6 +506,39 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         }
     }
     public PlayerActionsActions @PlayerActions => new PlayerActionsActions(this);
+
+    // OptionsActions
+    private readonly InputActionMap m_OptionsActions;
+    private IOptionsActionsActions m_OptionsActionsActionsCallbackInterface;
+    private readonly InputAction m_OptionsActions_CameraAxe;
+    public struct OptionsActionsActions
+    {
+        private @PlayerControls m_Wrapper;
+        public OptionsActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @CameraAxe => m_Wrapper.m_OptionsActions_CameraAxe;
+        public InputActionMap Get() { return m_Wrapper.m_OptionsActions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(OptionsActionsActions set) { return set.Get(); }
+        public void SetCallbacks(IOptionsActionsActions instance)
+        {
+            if (m_Wrapper.m_OptionsActionsActionsCallbackInterface != null)
+            {
+                @CameraAxe.started -= m_Wrapper.m_OptionsActionsActionsCallbackInterface.OnCameraAxe;
+                @CameraAxe.performed -= m_Wrapper.m_OptionsActionsActionsCallbackInterface.OnCameraAxe;
+                @CameraAxe.canceled -= m_Wrapper.m_OptionsActionsActionsCallbackInterface.OnCameraAxe;
+            }
+            m_Wrapper.m_OptionsActionsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @CameraAxe.started += instance.OnCameraAxe;
+                @CameraAxe.performed += instance.OnCameraAxe;
+                @CameraAxe.canceled += instance.OnCameraAxe;
+            }
+        }
+    }
+    public OptionsActionsActions @OptionsActions => new OptionsActionsActions(this);
     public interface IPlayerMouvementActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -487,5 +550,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnDrop(InputAction.CallbackContext context);
         void OnFire1(InputAction.CallbackContext context);
         void OnFire2(InputAction.CallbackContext context);
+    }
+    public interface IOptionsActionsActions
+    {
+        void OnCameraAxe(InputAction.CallbackContext context);
     }
 }
