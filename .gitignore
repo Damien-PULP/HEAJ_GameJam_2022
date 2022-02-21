@@ -6,6 +6,8 @@
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
+[Bb]uild2/
+[Bb]uild3/
 [Bb]uilds/
 [Ll]ogs/
 [Mm]emoryCaptures/
@@ -79,3 +81,5 @@ GameJam_02_2022/Assets/AmplifyShaderEditor/Examples/Sample Resources.unitypackag
 GameArt/ZBRUSH/Rock modulaire.ztl
 GameArt/FBX/high.assbin
 GameJam_02_2022/Build.zip
+GameJam_02_2022/Build2.zip
+GameJam_02_2022/Build3.zip

@@ -96,7 +96,8 @@ public class ParasiteAI : MonoBehaviour
     {
         for (int i = 0; i < CurrentEnemyToSpawn; i++)
         {
-            Vector2 posInCircleRadius = Random.insideUnitCircle.normalized * RealRadiusWorld;
+            float real2 = RealRadiusWorld + m_OffsetRadiusWorld;
+            Vector2 posInCircleRadius = Random.insideUnitCircle.normalized * real2;
             Vector3 positionToSpawn = new Vector3(posInCircleRadius.x, MaxHeightTerrain, posInCircleRadius.y);
             RaycastHit hit;
             if (Physics.Raycast(positionToSpawn, -Vector3.up, out hit, MaxHeightTerrain + 100f))
@@ -128,7 +129,7 @@ public class ParasiteAI : MonoBehaviour
 
         Vector3 playerPos = GameManager.s_Instance.m_Player.position;
         float distancePlayerToCenter = Vector3.Distance(playerPos, m_CenterWorld);
-        RealRadiusWorld = (CurrentRadius * m_FactorRadiusWorld) + m_OffsetRadiusWorld;
+        RealRadiusWorld = (CurrentRadius * m_FactorRadiusWorld);
         if (distancePlayerToCenter >= RealRadiusWorld)
         {
             GameManager.s_Instance.PlayerOnEnterInZone();
@@ -150,8 +151,10 @@ public class ParasiteAI : MonoBehaviour
 
     public void RemoveAEnemy(GameObject enemy)
     {
+        
         EnemyWave.Remove(enemy);
         CurrentItemInWave--;
+        Debug.Log("item : " + CurrentItemInWave);
     }
 
     private void OnDrawGizmosSelected()

@@ -7,6 +7,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyAI : MonoBehaviour
 {
+    #region Variables 
     public enum E_State
     {
         Spawn,
@@ -17,7 +18,7 @@ public class EnemyAI : MonoBehaviour
         Dead,
     }
     public E_State m_CurrentState;
-    public GameObject m_Collectable;
+    public GameObject m_DropCollectableDeath;
 
     [Header("Enemy Attributes")]
     public float m_Health = 100f;
@@ -36,24 +37,19 @@ public class EnemyAI : MonoBehaviour
 
     [Header("Timing Settings")]
     public float m_TimeBetweenAttack = 3f;
+    public float m_TimeImpacted = 1.5f;
     public float m_DestroyDead = 4f;
     [Space]
     public LayerMask m_IgnoreLayerAttack;
 
     [Header("Animation")]
-    public Animator m_Animator;
-    public string m_RunNameParams;
-    public string m_Attack1NameParams = "Attack1";
-    public string m_Attack2NameParams = "Attack2";
-    public string m_ImpactedNameParams = "Impacted";
-    public string m_DeadNameParams = "Dead";
-    private bool isRunAnim;
+    public EnemyAnimationController m_AnimationController;
     private bool IsAttackNow;
 
 
     private Transform PlayerTarget;
     private Transform TowerTarget;
-    private Vector3 CurrentPos = new Vector3();
+    private Vector3 LastPostTarget = new Vector3();
 
     private NavMeshAgent NavAgent;
     private Transform CurrentTarget;
@@ -61,6 +57,7 @@ public class EnemyAI : MonoBehaviour
 
     private bool CanBeAttack = true;
     private float Timer;
+    #endregion
 
     private void Start()
     {
@@ -78,8 +75,10 @@ public class EnemyAI : MonoBehaviour
 
     private void UpdateState()
     {
+        // Calcul Distance to player
         float distanceToPlayer = Vector3.Distance(PlayerTarget.position, transform.position);
 
+        // Calcul if the target is the player or the tower
         if (distanceToPlayer <= m_DistanceViewPlayer)
         {
             if (CurrentTarget != PlayerTarget)
@@ -92,24 +91,45 @@ public class EnemyAI : MonoBehaviour
             CurrentTarget = TowerTarget;
         }
 
-        UpdateAnimation();
-
+        // Calcul Distance to target
         DistanceToTarget = Vector3.Distance(CurrentTarget.position, transform.position);
-        CanBeAttack = GameManager.s_Instance.CheckIfCanBeAttack();
 
         switch (m_CurrentState)
         {
             case E_State.Spawn:
                 break;
             case E_State.Chase:
+                CheckIfAttackIsPossible();
                 ChaseTarget();
                 break;
             case E_State.Impact:
+                // Enemy has impacted
+                Timer += Time.deltaTime;
+                if(Timer >= m_TimeImpacted)
+                {
+                    if(DistanceToTarget <= m_DistanceAttack)
+                    {
+                        CheckIfAttackIsPossible();
+                        if (CanBeAttack)
+                        {
+                            SwitchState(E_State.Attack);
+                        }
+                        else
+                        {
+                            SwitchState(E_State.Idle);
+                        }
+                    }
+                    else
+                    {
+                        SwitchState(E_State.Chase);
+                    }
+                }
                 break;
             case E_State.Attack:
                 AttackTarget();
                 break;
             case E_State.Idle:
+                CheckIfAttackIsPossible();
                 if (CanBeAttack)
                 {
                     SwitchState(E_State.Chase);
@@ -121,47 +141,54 @@ public class EnemyAI : MonoBehaviour
                 break;
         }
     }
+
+    private void CheckIfAttackIsPossible()
+    {
+        // Check if the player is not alredy attacked by other enemy 
+        CanBeAttack = GameManager.s_Instance.CheckIfCanBeAttack();
+    }
+
     private void EnterState()
     {
+        Timer = 0f;
         switch (m_CurrentState)
         {
             case E_State.Spawn:
+                // Direct switch to chase
                 SwitchState(E_State.Chase);
                 break;
             case E_State.Chase:
-                isRunAnim = true;
+                //PLAY RUN
+                m_AnimationController.UpdateRunAnimation(true);
                 break;
             case E_State.Impact:
-                m_Animator.SetTrigger(m_ImpactedNameParams);
-                Debug.Log("impacted");
-                SwitchState(E_State.Chase);
-                isRunAnim = false;
+                //PLAY IMPACT
+                m_AnimationController.PlayImpacted();
                 break;
             case E_State.Attack:
-                isRunAnim = false;
-                CurrentPos = CurrentTarget.position;
-                NavAgent.SetDestination(CurrentPos);
+                // Registre last position
+                LastPostTarget = CurrentTarget.position;
+                NavAgent.SetDestination(LastPostTarget);
                 GameManager.s_Instance.IndicEnemyStartAttack();
                 break;
             case E_State.Idle:
-                isRunAnim = false;
+
                 break;
             case E_State.Dead:
-                isRunAnim = false;
+
                 Debug.Log("EnemyDead");
                 Dead();
                 break;
             default:
                 break;
         }
-        UpdateAnimation();
     }
 
     private void Dead()
     {
         ParasiteAI.s_Instance.RemoveAEnemy(gameObject);
-        m_Animator.SetTrigger(m_DeadNameParams);
-        Instantiate(m_Collectable, transform.position, transform.rotation);
+
+        Instantiate(m_DropCollectableDeath, transform.position, transform.rotation);
         m_Collider.enabled = false;
         Destroy(gameObject, m_DestroyDead);
     }
@@ -173,13 +200,14 @@ public class EnemyAI : MonoBehaviour
             case E_State.Spawn:
                 break;
             case E_State.Chase:
+                m_AnimationController.UpdateRunAnimation(false);
                 break;
             case E_State.Impact:
                 break;
             case E_State.Attack:
                 NavAgent.ResetPath();
-                CurrentPos = CurrentTarget.position;
-                NavAgent.SetDestination(CurrentPos);
+                LastPostTarget = CurrentTarget.position;
+                NavAgent.SetDestination(LastPostTarget);
                 GameManager.s_Instance.IndicEnemyStopAttack();
                 break;
             case E_State.Idle:
@@ -199,8 +227,8 @@ public class EnemyAI : MonoBehaviour
 
     private void ChaseTarget()
     {
-        CurrentPos = CurrentTarget.position;
-        NavAgent.SetDestination(CurrentPos);
+        LastPostTarget = CurrentTarget.position;
+        NavAgent.SetDestination(LastPostTarget);
 
         if (CanBeAttack)
         {
@@ -235,17 +263,6 @@ public class EnemyAI : MonoBehaviour
             IsAttackNow = true;
             Timer = 0f;
 
-            int animAttack = UnityEngine.Random.Range(0, 2);
-            if(animAttack == 0)
-            {
-                m_Animator.SetTrigger(m_Attack1NameParams);
-            }
-            else
-            {
-                m_Animator.SetTrigger(m_Attack2NameParams);
-            }
-
-
             RaycastHit hit;
             if(Physics.Raycast(m_AnchorAttack.position, transform.forward, out hit, m_DistanceRangeAttack, ~m_IgnoreLayerAttack))
             {
@@ -275,11 +292,5 @@ public class EnemyAI : MonoBehaviour
         {
             SwitchState(E_State.Impact);
         }
-    }
-
-    private void UpdateAnimation()
-    {
-        Debug.Log("Update Run");
-        m_Animator.SetBool(m_RunNameParams, isRunAnim);
     }
 }
