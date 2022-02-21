@@ -26,8 +26,9 @@ public class EnemyAI : MonoBehaviour
     public float m_Damage = 25f;
     public Transform m_AnchorAttack;
 
-    [Header("Agent Settings")]
+    [Header("Move Settings")]
     public float m_Speed = 13f;
+    public float m_SpeedLookRotation = 0.2f;
     public Collider m_Collider;
 
     [Header("Distance Settings")]
@@ -36,7 +37,8 @@ public class EnemyAI : MonoBehaviour
     public float m_DistanceToWait = 10f;
 
     [Header("Timing Settings")]
-    public float m_TimeBetweenAttack = 3f;
+    public float m_StartTimeToAttack = 0.35f;
+    public float m_TimeBetweenAttack = 1.2f;
     public float m_TimeImpacted = 1.5f;
     public float m_DestroyDead = 4f;
     [Space]
@@ -50,6 +52,7 @@ public class EnemyAI : MonoBehaviour
     private Transform PlayerTarget;
     private Transform TowerTarget;
     private Vector3 LastPostTarget = new Vector3();
+    private Vector3 LastPostToLook = new Vector3();
 
     private NavMeshAgent NavAgent;
     private Transform CurrentTarget;
@@ -73,23 +76,32 @@ public class EnemyAI : MonoBehaviour
         UpdateState();
     }
 
+
+
+    private void CheckIfAttackIsPossible()
+    {
+        // Check if the player is not alredy attacked by other enemy 
+        CanBeAttack = GameManager.s_Instance.CheckIfCanBeAttack();
+    }
+    #region State Methods
     private void UpdateState()
     {
         // Calcul Distance to player
-        float distanceToPlayer = Vector3.Distance(PlayerTarget.position, transform.position);
+        //float distanceToPlayer = Vector3.Distance(PlayerTarget.position, transform.position);
 
         // Calcul if the target is the player or the tower
-        if (distanceToPlayer <= m_DistanceViewPlayer)
-        {
-            if (CurrentTarget != PlayerTarget)
-            {
-                CurrentTarget = PlayerTarget;
-            }
-        }
-        else
-        {
-            CurrentTarget = TowerTarget;
-        }
+        /* if (distanceToPlayer <= m_DistanceViewPlayer)
+         {
+             if (CurrentTarget != PlayerTarget)
+             {
+                 CurrentTarget = PlayerTarget;
+             }
+         }
+         else
+         {
+             CurrentTarget = TowerTarget;
+         }*/
+        CurrentTarget = PlayerTarget;
 
         // Calcul Distance to target
         DistanceToTarget = Vector3.Distance(CurrentTarget.position, transform.position);
@@ -105,9 +117,9 @@ public class EnemyAI : MonoBehaviour
             case E_State.Impact:
                 // Enemy has impacted
                 Timer += Time.deltaTime;
-                if(Timer >= m_TimeImpacted)
+                if (Timer >= m_TimeImpacted)
                 {
-                    if(DistanceToTarget <= m_DistanceAttack)
+                    if (DistanceToTarget <= m_DistanceAttack)
                     {
                         CheckIfAttackIsPossible();
                         if (CanBeAttack)
@@ -132,7 +144,14 @@ public class EnemyAI : MonoBehaviour
                 CheckIfAttackIsPossible();
                 if (CanBeAttack)
                 {
-                    SwitchState(E_State.Chase);
+                    if (DistanceToTarget <= m_DistanceAttack)
+                    {
+                        SwitchState(E_State.Attack);
+                    }
+                    else
+                    {
+                        SwitchState(E_State.Chase);
+                    }
                 }
                 break;
             case E_State.Dead:
@@ -141,13 +160,6 @@ public class EnemyAI : MonoBehaviour
                 break;
         }
     }
-
-    private void CheckIfAttackIsPossible()
-    {
-        // Check if the player is not alredy attacked by other enemy 
-        CanBeAttack = GameManager.s_Instance.CheckIfCanBeAttack();
-    }
-
     private void EnterState()
     {
         Timer = 0f;
@@ -159,6 +171,7 @@ public class EnemyAI : MonoBehaviour
                 break;
             case E_State.Chase:
                 //PLAY RUN
+                NavAgent.enabled = true;
                 m_AnimationController.UpdateRunAnimation(true);
                 break;
             case E_State.Impact:
@@ -167,32 +180,19 @@ public class EnemyAI : MonoBehaviour
                 break;
             case E_State.Attack:
                 // Registre last position
-                LastPostTarget = CurrentTarget.position;
-                NavAgent.SetDestination(LastPostTarget);
+                LastPostToLook = new Vector3(CurrentTarget.position.x, transform.position.y, CurrentTarget.position.z);
                 GameManager.s_Instance.IndicEnemyStartAttack();
                 break;
             case E_State.Idle:
-
+                LastPostToLook = new Vector3(CurrentTarget.position.x, transform.position.y, CurrentTarget.position.z);
                 break;
             case E_State.Dead:
-
-                Debug.Log("EnemyDead");
                 Dead();
                 break;
             default:
                 break;
         }
     }
-
-    private void Dead()
-    {
-        ParasiteAI.s_Instance.RemoveAEnemy(gameObject);
-
-        Instantiate(m_DropCollectableDeath, transform.position, transform.rotation);
-        m_Collider.enabled = false;
-        Destroy(gameObject, m_DestroyDead);
-    }
-
     private void ExitState()
     {
         switch (m_CurrentState)
@@ -201,13 +201,11 @@ public class EnemyAI : MonoBehaviour
                 break;
             case E_State.Chase:
                 m_AnimationController.UpdateRunAnimation(false);
+                NavAgent.enabled = false;
                 break;
             case E_State.Impact:
                 break;
             case E_State.Attack:
-                NavAgent.ResetPath();
-                LastPostTarget = CurrentTarget.position;
-                NavAgent.SetDestination(LastPostTarget);
                 GameManager.s_Instance.IndicEnemyStopAttack();
                 break;
             case E_State.Idle:
@@ -223,7 +221,22 @@ public class EnemyAI : MonoBehaviour
         ExitState();
         m_CurrentState = newState;
         EnterState();
+        
     }
+    #endregion
+
+    private void Dead()
+    {
+        m_AnimationController.PlayDead();
+        ParasiteAI.s_Instance.RemoveAEnemy(gameObject);
+
+        Instantiate(m_DropCollectableDeath, transform.position, transform.rotation);
+        m_Collider.enabled = false;
+        Destroy(gameObject, m_DestroyDead);
+    }
+
+
+
 
     private void ChaseTarget()
     {
@@ -239,7 +252,6 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            SwitchState(E_State.Idle);
             if (DistanceToTarget <= m_DistanceToWait)
             {
                 SwitchState(E_State.Idle);
@@ -248,11 +260,16 @@ public class EnemyAI : MonoBehaviour
 
 
     }
+    private void LookAtTarget()
+    {
+        Vector3 posToLook = new Vector3(CurrentTarget.position.x, transform.position.y, CurrentTarget.position.z);
+        LastPostToLook = Vector3.Slerp(LastPostToLook, posToLook, m_SpeedLookRotation);
+        transform.LookAt(posToLook);
+    }
     private void AttackTarget()
     {
 
-        Vector3 posToLook = new Vector3(CurrentTarget.position.x, transform.position.y, CurrentTarget.position.z);
-        transform.LookAt(posToLook);
+        LookAtTarget();
         if (!IsAttackNow)
         {
             Timer += Time.deltaTime;
@@ -263,6 +280,9 @@ public class EnemyAI : MonoBehaviour
             IsAttackNow = true;
             Timer = 0f;
 
+            // Play Attack Anim
+            m_AnimationController.PlayAttackRandom();
+            // Try Apply damage to player
             RaycastHit hit;
             if(Physics.Raycast(m_AnchorAttack.position, transform.forward, out hit, m_DistanceRangeAttack, ~m_IgnoreLayerAttack))
             {
@@ -273,7 +293,6 @@ public class EnemyAI : MonoBehaviour
             }
 
             IsAttackNow = false;
-            Debug.Log("IsAttack");
         }
         // Check Distance
         if (DistanceToTarget > m_DistanceAttack && !IsAttackNow)
@@ -290,7 +309,7 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            SwitchState(E_State.Impact);
+            if (m_CurrentState != E_State.Dead) SwitchState(E_State.Impact);
         }
     }
 }
