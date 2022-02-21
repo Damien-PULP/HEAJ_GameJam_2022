@@ -5,21 +5,8 @@ using System;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager s_Instance;
     public Sound[] m_Sounds;
 
-    private void Start()
-    {
-        if (s_Instance)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        else
-        {
-            s_Instance = this;
-        }
-    }
 
     private void Awake()
     {
@@ -42,18 +29,32 @@ public class SoundManager : MonoBehaviour
             s.m_Source.minDistance = s.m_MinDistance;
             s.m_Source.maxDistance = s.m_MaxDistance;
             s.m_Source.playOnAwake = s.m_PlayOnAwake;
+            s.m_Source.rolloffMode = s.m_RollOfMode;
             if (s.m_PlayOnAwake)
             {
                 s.m_Source.Play();
             }
         }
-        DontDestroyOnLoad(gameObject);
     }
 
     public void PlaySound(string name)
     {
         Sound s = Array.Find(m_Sounds, sound => sound.m_Name == name);
         if (s == null) return;
-        s.m_Source.Play();
+        if (!s.m_Loop)
+        {
+            s.m_Source.PlayOneShot(s.m_AudioClip);
+        }
+        else
+        {
+            s.m_Source.Play();
+        }
+
+    }
+    public void StopSound(string name)
+    {
+        Sound s = Array.Find(m_Sounds, sound => sound.m_Name == name);
+        if (s == null) return;
+        s.m_Source.Stop();
     }
 }

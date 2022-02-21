@@ -18,7 +18,7 @@ public class EnemyAI : MonoBehaviour
         Dead,
     }
     public E_State m_CurrentState;
-    public GameObject m_DropCollectableDeath;
+
 
     [Header("Enemy Attributes")]
     public float m_Health = 100f;
@@ -44,8 +44,11 @@ public class EnemyAI : MonoBehaviour
     [Space]
     public LayerMask m_IgnoreLayerAttack;
 
-    [Header("Animation")]
+    [Header("Component Required")]
     public EnemyAnimationController m_AnimationController;
+    public GameObject m_DropCollectableDeath;
+
+
     private bool IsAttackNow;
 
 
@@ -184,6 +187,7 @@ public class EnemyAI : MonoBehaviour
                 GameManager.s_Instance.IndicEnemyStartAttack();
                 break;
             case E_State.Idle:
+                m_AnimationController.UpdateIdle(true);
                 LastPostToLook = new Vector3(CurrentTarget.position.x, transform.position.y, CurrentTarget.position.z);
                 break;
             case E_State.Dead:
@@ -209,6 +213,7 @@ public class EnemyAI : MonoBehaviour
                 GameManager.s_Instance.IndicEnemyStopAttack();
                 break;
             case E_State.Idle:
+                m_AnimationController.UpdateIdle(true);
                 break;
             case E_State.Dead:
                 break;

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2342733958382740332}
   - component: {fileID: 1790071093}
   - component: {fileID: 2760339185455015451}
+  - component: {fileID: 3902386004136363135}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -49,7 +50,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.93
   m_Speed: 11
-  m_Acceleration: 6
+  m_Acceleration: 5
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 2.8
@@ -73,23 +74,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CurrentState: 0
-  m_DropCollectableDeath: {fileID: 8945917872566171089, guid: d7dd283322afd2a4aa954bd993d3d766, type: 3}
   m_Health: 100
-  m_DistanceRangeAttack: 3.8
+  m_DistanceRangeAttack: 2.8
   m_Damage: 15
   m_AnchorAttack: {fileID: 3626807939457964336}
   m_Speed: 11
+  m_SpeedLookRotation: 2
   m_Collider: {fileID: 1790071093}
   m_DistanceViewPlayer: 100
   m_DistanceAttack: 2.5
   m_DistanceToWait: 15
-  m_TimeBetweenAttack: 2
+  m_StartTimeToAttack: 0.35
+  m_TimeBetweenAttack: 1.2
   m_TimeImpacted: 1.5
   m_DestroyDead: 4
   m_IgnoreLayerAttack:
     serializedVersion: 2
     m_Bits: 64
   m_AnimationController: {fileID: 2760339185455015451}
+  m_DropCollectableDeath: {fileID: 8945917872566171089, guid: d7dd283322afd2a4aa954bd993d3d766, type: 3}
 --- !u!136 &1790071093
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -100,7 +103,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.76
+  m_Radius: 0.89
   m_Height: 1.67
   m_Direction: 1
   m_Center: {x: 0, y: -0.47, z: 0}
@@ -117,11 +120,97 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Animator: {fileID: 5866666021794284041}
+  m_SoundManager: {fileID: 3902386004136363135}
   m_RunNameParams: Run
   m_Attack1NameParams: Attack1
   m_Attack2NameParams: Attack2
   m_ImpactedNameParams: Impacted
   m_DeadNameParams: Dead
+--- !u!114 &3902386004136363135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310153850189045414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 773496fa05df37940b4638bfbfaac2da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Sounds:
+  - m_Name: Idle
+    m_ParentSound: {fileID: 310153850189045414}
+    m_AudioClip: {fileID: 8300000, guid: a53852baf90eb404b83ff26a76f0090a, type: 3}
+    m_Loop: 1
+    m_PlayOnAwake: 0
+    m_Volume: 0.885
+    m_Pitch: 1
+    m_SpacialBlend2DTo3D: 1
+    m_MinDistance: 3.5
+    m_MaxDistance: 30
+    m_RollOfMode: 1
+    m_Source: {fileID: 0}
+  - m_Name: Run
+    m_ParentSound: {fileID: 310153850189045414}
+    m_AudioClip: {fileID: 8300000, guid: 9b394bdb8ba0de140956d8e2c15353a1, type: 3}
+    m_Loop: 1
+    m_PlayOnAwake: 0
+    m_Volume: 1
+    m_Pitch: 1
+    m_SpacialBlend2DTo3D: 1
+    m_MinDistance: 3.5
+    m_MaxDistance: 30
+    m_RollOfMode: 1
+    m_Source: {fileID: 0}
+  - m_Name: Attack
+    m_ParentSound: {fileID: 310153850189045414}
+    m_AudioClip: {fileID: 8300000, guid: d605eabfb2403bc4b9fe034ed365bf31, type: 3}
+    m_Loop: 0
+    m_PlayOnAwake: 0
+    m_Volume: 0.838
+    m_Pitch: 0.63
+    m_SpacialBlend2DTo3D: 1
+    m_MinDistance: 3.5
+    m_MaxDistance: 30
+    m_RollOfMode: 1
+    m_Source: {fileID: 0}
+  - m_Name: Impacted
+    m_ParentSound: {fileID: 310153850189045414}
+    m_AudioClip: {fileID: 8300000, guid: 6bbb2b8a5b6498143bebb61563028234, type: 3}
+    m_Loop: 0
+    m_PlayOnAwake: 0
+    m_Volume: 1
+    m_Pitch: 0.8
+    m_SpacialBlend2DTo3D: 1
+    m_MinDistance: 3.5
+    m_MaxDistance: 30
+    m_RollOfMode: 1
+    m_Source: {fileID: 0}
+  - m_Name: Dead
+    m_ParentSound: {fileID: 310153850189045414}
+    m_AudioClip: {fileID: 8300000, guid: 378b671b69ae9b443a0c042c811c3d38, type: 3}
+    m_Loop: 0
+    m_PlayOnAwake: 0
+    m_Volume: 1
+    m_Pitch: 0.6
+    m_SpacialBlend2DTo3D: 1
+    m_MinDistance: 3.5
+    m_MaxDistance: 30
+    m_RollOfMode: 1
+    m_Source: {fileID: 0}
+  - m_Name: Hit
+    m_ParentSound: {fileID: 310153850189045414}
+    m_AudioClip: {fileID: 8300000, guid: 0a0cac9c550586642ba0e6dec36059b8, type: 3}
+    m_Loop: 0
+    m_PlayOnAwake: 0
+    m_Volume: 1
+    m_Pitch: 1
+    m_SpacialBlend2DTo3D: 1
+    m_MinDistance: 3.5
+    m_MaxDistance: 30
+    m_RollOfMode: 1
+    m_Source: {fileID: 0}
 --- !u!95 &1248338846
 Animator:
   serializedVersion: 3

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using System;
 
 [Serializable]
@@ -21,6 +22,7 @@ public class Sound
     public float m_SpacialBlend2DTo3D = 0f;
     public float m_MinDistance = 1f;
     public float m_MaxDistance = 100f;
+    public AudioRolloffMode m_RollOfMode;
     [HideInInspector]
     public AudioSource m_Source;
 }
